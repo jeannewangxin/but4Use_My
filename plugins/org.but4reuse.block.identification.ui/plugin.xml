@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            category="org.but4reuse.page"
+            class="org.but4reuse.block.identification.ui.preferences.BlockIdentificationPreferencePage"
+            id="org.but4reuse.block.identification.ui.page"
+            name="Block Identification">
+      </page>
+   </extension>
+
+</plugin>

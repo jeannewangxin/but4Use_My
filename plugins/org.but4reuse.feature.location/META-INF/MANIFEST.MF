@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Feature Location Core
+Bundle-SymbolicName: org.but4reuse.feature.location;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: org.but4reuse.feature.location.activator.Activator
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.but4reuse.adaptedmodel,
+ org.but4reuse.feature.constraints,
+ org.but4reuse.adapters
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-ActivationPolicy: lazy
+Export-Package: org.but4reuse.feature.location,
+ org.but4reuse.feature.location.helper,
+ org.but4reuse.feature.location.impl
+Bundle-Vendor: BUT4Reuse

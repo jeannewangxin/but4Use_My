@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension-point id="org.but4reuse.block.identification" name="Block Identification Algorithms" schema="schema/org.but4reuse.block.identification.exsd"/>
+   <extension
+         point="org.but4reuse.block.identification">
+      <block.identification
+            class="org.but4reuse.block.identification.impl.IntersectionsBlockIdentification"
+            name="Interdependent elements (Intersections among artefacts)">
+      </block.identification>
+      <block.identification
+            class="org.but4reuse.block.identification.impl.SimilarElementsBlockIdentification"
+            name="Similar elements">
+      </block.identification>
+   </extension>
+   <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer
+            class="org.but4reuse.block.identification.helper.PreferenceInitializer">
+      </initializer>
+   </extension>
+
+</plugin>

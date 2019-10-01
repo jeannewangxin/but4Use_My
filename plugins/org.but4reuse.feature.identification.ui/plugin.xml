@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            adaptable="false"
+            id="org.but4reuse.feature.identification.ui.action"
+            objectClass="org.but4reuse.artefactmodel.ArtefactModel">
+         <action
+               class="org.but4reuse.feature.identification.ui.actions.FeatureIdentificationAction"
+               icon="icons/FeatureList.gif"
+               id="org.but4reuse.feature.identification.ui.action"
+               label="Feature Identification"
+               menubarPath="additions">
+         </action>
+      </objectContribution>
+      <viewerContribution
+            id="org.but4reuse.feature.identification.ui.viewerContribution"
+            targetID="org.eclipse.ui.views.ResourceNavigator">
+         <action
+               class="org.but4reuse.feature.identification.ui.actions.FeatureIdentificationAction"
+               enablesFor="*"
+               icon="icons/FeatureList.gif"
+               id="org.but4reuse.feature.identification.ui.action1"
+               label="Feature Identification"
+               menubarPath="but4reuse/additions">
+         </action>
+      </viewerContribution>
+   </extension>
+
+</plugin>

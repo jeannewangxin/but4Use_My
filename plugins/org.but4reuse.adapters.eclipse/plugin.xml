@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.but4reuse.adapters">
+      <adapter
+            class="org.but4reuse.adapters.eclipse.EclipseAdapter"
+            icon="icons/icon_eclipse.png"
+            id="eclipse"
+            name="Eclipse">
+         <elements>
+            <element
+                  element="org.but4reuse.adapters.eclipse.PluginElement"></element>
+            <element
+                  element="org.but4reuse.adapters.eclipse.FileElement">
+            </element>
+         </elements>
+      </adapter>
+   </extension>
+
+</plugin>

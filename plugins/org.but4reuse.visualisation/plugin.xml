@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension-point id="org.but4reuse.visualisation" name="but4reuse visualisation" schema="schema/org.but4reuse.visualisation.exsd"/>
+   <extension
+         point="org.eclipse.contribution.visualiser.providers">
+      <provider
+            contentProviderClass="org.but4reuse.visualisation.impl.visualiser.adaptedmodel.BlockElementsContentProvider"
+            description="Elements on Artefacts"
+            emptyMessage="Empty. Run a feature identification or feature localization action"
+            id="org.but4reuse.visualisation.blockelementsonartefacts.provider"
+            markupProviderClass="org.but4reuse.visualisation.impl.visualiser.adaptedmodel.BlockElementsMarkupProvider"
+            name="Block Elements on Artefacts">
+      </provider>
+   </extension>
+
+   <extension
+         point="org.eclipse.contribution.visualiser.providers">
+      <provider
+            contentProviderClass="org.but4reuse.visualisation.impl.visualiser.adaptedmodel.BlocksContentProvider"
+            description="Blocks on Artefacts"
+            emptyMessage="Empty. Run a feature identification or feature localization action"
+            id="org.but4reuse.visualisation.blocksonartefacts.provider"
+            markupProviderClass="org.but4reuse.visualisation.impl.visualiser.adaptedmodel.BlockElementsMarkupProvider"
+            name="Blocks on Artefacts">
+      </provider>
+   </extension>
+
+   <extension
+         point="org.eclipse.contribution.visualiser.providers">
+      <provider
+            contentProviderClass="org.but4reuse.visualisation.impl.visualiser.featurelist.BlocksOnFeaturesContentProvider"
+            description="Features on Blocks"
+            emptyMessage="Empty. Run a feature localization action"
+            id="org.but4reuse.visualisation.featuresonblocks.provider"
+            markupProviderClass="org.but4reuse.visualisation.impl.visualiser.featurelist.FeaturesMarkupProvider"
+            name="Features on Blocks">
+      </provider>
+   </extension>
+   
+  <extension
+         point="org.eclipse.contribution.visualiser.providers">
+      <provider
+            contentProviderClass="org.but4reuse.visualisation.impl.visualiser.featurelist.FeaturesOnBlocksContentProvider"
+            description="Blocks on Features"
+            emptyMessage="Empty. Run a feature localization action"
+            id="org.but4reuse.visualisation.blocksonfeatures.provider"
+            markupProviderClass="org.but4reuse.visualisation.impl.visualiser.adaptedmodel.BlockElementsMarkupProvider"
+            name="Blocks on Features">
+      </provider>
+   </extension>
+  <extension
+        name="Visualiser"
+        point="org.but4reuse.visualisation">
+     <visualisation
+           class="org.but4reuse.visualisation.impl.visualiser.adaptedmodel.BlockElementsOnArtefactsVisualisation"
+           name="Visualiser: Block Elements on Artefacts">
+     </visualisation>
+     <visualisation
+           class="org.but4reuse.visualisation.impl.visualiser.adaptedmodel.BlocksOnArtefactsVisualisation"
+           name="Visualiser: Blocks on Artefacts">
+     </visualisation>
+     <visualisation
+           class="org.but4reuse.visualisation.impl.visualiser.featurelist.FeaturesOnBlocksVisualisation"
+           name="Visualiser: Features on Blocks">
+     </visualisation>
+     <visualisation
+           class="org.but4reuse.visualisation.impl.visualiser.featurelist.BlocksOnFeaturesVisualisation"
+           name="Visualiser: Blocks on Features">
+     </visualisation>
+  </extension>
+    <extension
+        point="org.but4reuse.visualisation">
+     <visualisation
+           class="org.but4reuse.visualisation.impl.BlocksOnFeaturesHeatMapVisualisation"
+           name="Feature-Specific heuristic HeatMap">
+     </visualisation>
+     <visualisation
+           class="org.but4reuse.visualisation.impl.MetricsVisualisation"
+           name="Metrics">
+     </visualisation>
+  </extension>
+     <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            category="org.but4reuse.page"
+            class="org.but4reuse.visualisation.ui.preferences.VisualisationsPreferencePage"
+            id="org.but4reuse.visualisation.ui.page"
+            name="Visualisations">
+      </page>
+   </extension>
+      <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer
+            class="org.but4reuse.visualisation.ui.preferences.PreferenceInitializer">
+      </initializer>
+   </extension>
+      <extension
+         point="org.eclipse.ui.views">
+      <view
+            category="org.but4reuse.views.category"
+            class="org.but4reuse.visualisation.impl.MetricsVisualisationView"
+            icon="IMG_OBJS_INFO_TSK"
+            id="org.but4reuse.visualisation.metrics"
+            name="Metrics"
+            restorable="true">
+      </view>
+   </extension>
+</plugin>

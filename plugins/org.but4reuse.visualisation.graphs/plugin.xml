@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.but4reuse.visualisation">
+      <visualisation
+            class="org.but4reuse.visualisation.graphs.ElementsGraphVisualisation"
+            name="Graph visualisations of Elements">
+      </visualisation>
+      <visualisation
+            class="org.but4reuse.visualisation.graphs.BlocksGraphVisualisation"
+            name="Graph visualisations of Blocks">
+      </visualisation>
+   </extension>
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            adaptable="false"
+            id="org.but4reuse.visualisations.graphs.createGraph"
+            objectClass="org.but4reuse.artefactmodel.Artefact">
+         <action
+               class="org.but4reuse.visualisation.graphs.actions.CreateArtefactGraphAction"
+               icon="IMG_OBJ_ELEMENTS"
+               id="org.but4reuse.visualisations.graphs.actions.createGraph"
+               label="Create Graph Visualisation"
+               menubarPath="additions">
+         </action>
+      </objectContribution>
+   </extension>
+</plugin>

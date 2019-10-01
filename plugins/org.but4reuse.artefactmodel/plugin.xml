@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated artefactmodel -->
+      <package
+            uri="http://org.but4reuse.artefact.model"
+            class="org.but4reuse.artefactmodel.ArtefactModelPackage"
+            genModel="model/artefactmodel.genmodel"/>
+   </extension>
+
+</plugin>

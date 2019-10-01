@@ -1,0 +1,21 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Formal Concept Analysis
+Bundle-SymbolicName: org.but4reuse.fca;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: org.but4reuse.fca.activator.Activator
+Require-Bundle: org.eclipse.core.runtime,
+ org.but4reuse.block.identification,
+ org.but4reuse.adaptedmodel,
+ org.but4reuse.adapters,
+ org.but4reuse.feature.constraints,
+ org.but4reuse.visualisation,
+ org.but4reuse.utils,
+ org.eclipse.core.resources
+Bundle-ActivationPolicy: lazy
+Bundle-ClassPath: libs/galatea.jar,
+ lib/org.apache.commons.logging.jar,
+ .
+Export-Package: fr.labri.galatea,
+ org.but4reuse.fca.utils
+Bundle-Vendor: BUT4Reuse

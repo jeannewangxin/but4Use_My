@@ -1,0 +1,18 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Adapter EMF-based models
+Bundle-SymbolicName: org.but4reuse.adapters.emf;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: org.but4reuse.adapters.emf.activator.Activator
+Require-Bundle: org.eclipse.core.runtime,
+ org.but4reuse.adapters,
+ org.but4reuse.utils,
+ org.eclipse.emf.diffmerge.ui,
+ org.eclipse.emf.ecore,
+ org.eclipse.ui,
+ org.but4reuse.adaptedmodel
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-ActivationPolicy: lazy
+Export-Package: org.but4reuse.adapters.emf,
+ org.but4reuse.adapters.emf.helper
+Bundle-Vendor: BUT4Reuse

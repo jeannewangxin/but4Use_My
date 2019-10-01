@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.newWizards">
+      <category
+            id="org.but4reuse.newWizards.category"
+            name="BUT4Reuse">
+      </category>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views">
+      <category
+            id="org.but4reuse.views.category"
+            name="BUT4Reuse">
+      </category>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            class="org.but4reuse.perspectives.But4ReusePerspective"
+            icon="icons/but4reuse.png"
+            id="org.but4reuse.perspective"
+            name="BUT4Reuse">
+      </perspective>
+   </extension>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            class="org.but4reuse.preferences.BUT4ReusePreferencesPage"
+            id="org.but4reuse.page"
+            name="BUT4Reuse">
+      </page>
+   </extension>
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <viewerContribution
+            id="org.but4reuse.viewerContribution"
+            targetID="org.eclipse.ui.views.ResourceNavigator">
+         <menu
+               icon="icons/but4reuse.png"
+               id="but4reuse"
+               label="BUT4Reuse"
+               path="additions">
+         </menu>
+      </viewerContribution>
+   </extension>
+
+</plugin>

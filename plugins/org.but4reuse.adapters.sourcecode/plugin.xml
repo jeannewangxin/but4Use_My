@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.but4reuse.adapters">
+      <adapter
+            class="org.but4reuse.adapters.sourcecode.JavaSourceCodeAdapter"
+            icon="icons/code.gif"
+            id="java"
+            name="Java source code">
+         <elements>
+            <element
+                  element="org.but4reuse.adapters.sourcecode.FSTNonTerminalNodeElement"></element>
+            <element
+                  element="org.but4reuse.adapters.sourcecode.FSTTerminalNodeElement">
+            </element>
+            <element
+                  element="org.but4reuse.adapters.sourcecode.BodyElement">
+            </element>
+         </elements>
+      </adapter>
+      <adapter
+            class="org.but4reuse.adapters.sourcecode.CSourceCodeAdapter"
+            icon="icons/c.png"
+            id="c"
+            name="C source code">
+         <elements>
+            <element
+                  element="org.but4reuse.adapters.sourcecode.FSTTerminalNodeElement">
+            </element>
+            <element
+                  element="org.but4reuse.adapters.sourcecode.FSTNonTerminalNodeElement">
+            </element>
+            <element
+                  element="org.but4reuse.adapters.sourcecode.BodyElement">
+            </element>
+         </elements>
+      </adapter>
+   </extension>
+
+</plugin>
