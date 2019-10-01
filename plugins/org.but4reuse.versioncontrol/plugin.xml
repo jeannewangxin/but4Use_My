@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            adaptable="false"
+            id="org.but4reuse.versioncontroll.ui.action.versionControl"
+            objectClass="org.but4reuse.artefactmodel.Artefact">
+         <action
+               class="org.but4reuse.versioncontrol.ui.actions.ShowFeatureIdentificationFromVersionControl"
+               icon="icons/version-control.png"
+               id="org.but4reuse.versioncontrol.ui.action.versionControl"
+               label="Feature identification from version control"
+               menubarPath="additions">
+         </action>
+      </objectContribution>
+   </extension>
+
+</plugin>
