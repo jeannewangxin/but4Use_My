@@ -59,7 +59,7 @@ public class MyGithubClient implements IVersionControlClient {
 
 	private boolean cacheFilled;
 
-	private static String defaultToken = "18e5de4c3a9a7d0a04c2bef907cb06df34906bc8";
+	private static String defaultToken = "9b9bd4df46244be3c763bfe81bb4c36fd1f32a0e";
 
 	private void initializeClient() {
 
