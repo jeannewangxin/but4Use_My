@@ -1,0 +1,18 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Adapter Android
+Bundle-SymbolicName: org.but4reuse.adapters.android;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: org.but4reuse.adapters.android.activator.Activator
+Require-Bundle: org.eclipse.core.runtime,
+ org.but4reuse.adapters,
+ org.eclipse.ui,
+ org.eclipse.core.resources,
+ org.but4reuse.utils,
+ org.but4reuse.adapters.filestructure,
+ org.but4reuse.adapters.sourcecode,
+ org.eclipse.ui.workbench
+Bundle-ActivationPolicy: lazy
+Bundle-Vendor: BUT4Reuse
+Bundle-ClassPath: unpackUtils/jd/jd-cli.jar,
+ .

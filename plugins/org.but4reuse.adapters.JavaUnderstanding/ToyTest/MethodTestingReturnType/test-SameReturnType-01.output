@@ -1,0 +1,8 @@
+Block 0
+ Class: ToyTest.A Method:int getDirection
+Block 1
+ Class: ToyTest.A Method:int getDirection2
+ Class: ToyTest.A Method:void setDirection
+Block 2
+ Class: ToyTest.A Method:float getDirection2
+ Class: ToyTest.A Method:boolean setDirection

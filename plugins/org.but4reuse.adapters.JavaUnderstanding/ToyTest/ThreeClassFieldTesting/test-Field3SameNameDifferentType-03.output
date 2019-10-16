@@ -1,0 +1,11 @@
+Block 0
+ Class: ToyTest.A Field:( int | boolean ) should_be_the_same_name_but_different_type
+Block 1
+ Class: ToyTest.A Field:( int ) should_be_the_same
+ Class: ToyTest.A Field:( int ) first_field
+Block 2
+ Class: ToyTest.A Field:( int ) should_be_the_same
+ Class: ToyTest.A Field:( int ) first_field1
+Block 3
+ Class: ToyTest.A Field:( boolean ) second_field
+

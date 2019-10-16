@@ -26,7 +26,17 @@ public class AdaptersPreferencePage extends FieldEditorPreferencePage implements
 		BooleanFieldEditor bfe = new BooleanFieldEditor(PreferencesHelper.ADAPT_CONCURRENTLY,
 				"Adapt concurrently (Known issue in file-system access. Do not use it for filestructure nor eclipse adapters)",
 				getFieldEditorParent());
+
+//		BooleanFieldEditor bfe2 = new BooleanFieldEditor(PreferencesHelper.CONSTRUCT_PUREVARIANT,
+//				"Construction with pure::variants annotations", getFieldEditorParent());
+//
+//		BooleanFieldEditor bfe3 = new BooleanFieldEditor(PreferencesHelper.CONSTRUCT_IFDEF,
+//				"Construction with with #IFDEF annotations", getFieldEditorParent());
+
 		addField(bfe);
+
+//		addField(bfe2);
+//		addField(bfe3);
 	}
 
 	@Override

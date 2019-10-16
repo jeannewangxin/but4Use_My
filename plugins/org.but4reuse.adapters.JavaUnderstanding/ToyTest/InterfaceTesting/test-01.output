@@ -1,0 +1,6 @@
+Block 0
+ Class: ToyTest.A implements:  Interface2
+Block 1
+ Class: ToyTest.A implements:  Interface3
+Block 2
+ Class: ToyTest.A implements:  Interface1

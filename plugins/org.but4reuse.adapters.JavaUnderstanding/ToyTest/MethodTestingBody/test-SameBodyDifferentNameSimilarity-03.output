@@ -1,0 +1,5 @@
+Block 0
+Class:ToyTest.A Method:{
+  return this.direction;
+}
+

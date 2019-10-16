@@ -1,0 +1,5 @@
+Block 0
+ Class: ToyTest.A Field: int ( frame | tiless | tiles )
+Block 1
+ Class: ToyTest.A Field: int ( frame )
+

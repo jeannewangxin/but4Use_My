@@ -1,0 +1,12 @@
+Block 0
+ Class: ToyTest.A Field:(  private |  protected ) int frame
+ Class: ToyTest.A Field:(  private |  public ) int tiles
+Block 1
+ Class: ToyTest.A Field:(  private ) boolean bAnimation
+ Class: ToyTest.A Field:(  private final ) boolean bRGB
+ Class: ToyTest.A Field:(  private ) BufferedImage[][] images
+Block 2
+ Class: ToyTest.A Field:(  private ) boolean bAnimation
+ Class: ToyTest.A Field:(  private final ) boolean bRGB
+ Class: ToyTest.A Field:(  private ) BufferedImage[][] images
+

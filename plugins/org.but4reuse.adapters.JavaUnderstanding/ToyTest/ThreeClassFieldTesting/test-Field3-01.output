@@ -1,0 +1,4 @@
+Block 0
+ Class: ToyTest.A Field: int first_field
+Block 1
+ Class: ToyTest.A Field: boolean second_field

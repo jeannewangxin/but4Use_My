@@ -18,3 +18,7 @@ Require-Bundle: org.eclipse.core.runtime,
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Export-Package: org.but4reuse.adapters.ui
+Import-Package: org.but4reuse.adapters.java.elements.activator,
+ org.but4reuse.adapters.java.elements.adapter,
+ org.but4reuse.adapters.java.elements.preferences,
+ org.but4reuse.construction.annotation

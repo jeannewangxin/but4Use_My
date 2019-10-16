@@ -1,0 +1,17 @@
+Block 0
+ Class: ToyTest.A Method:Same_name(int,int) {
+  int v=2;
+  int c=3;
+}
+
+Block 1
+ Class: ToyTest.A Method:Same_name_diffParam(int,int,double) {
+  int v=2;
+  int c=3;
+}
+
+Block 2
+ Class: ToyTest.A Method:Same_name_diffParam(int,int,int) {
+  int v=2;
+  int c=3;
+}

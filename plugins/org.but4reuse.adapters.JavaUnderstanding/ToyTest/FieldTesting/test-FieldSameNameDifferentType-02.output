@@ -1,0 +1,8 @@
+Block 0
+ Class: ToyTest.A Field:( boolean | double ) c
+Block 1
+ Class: ToyTest.A Field:( int ) frame
+ Class: ToyTest.A Field:( int ) d
+Block 2
+ Class: ToyTest.A Field:( int ) tiles
+ Class: ToyTest.A Field:( int ) d

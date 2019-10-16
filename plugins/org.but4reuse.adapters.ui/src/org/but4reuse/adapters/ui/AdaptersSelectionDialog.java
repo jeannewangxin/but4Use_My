@@ -30,8 +30,11 @@ import org.eclipse.ui.dialogs.ListSelectionDialog;
 public class AdaptersSelectionDialog {
 
 	static List<IAdapter> correctAdapters = null;
+	static List<IAdapter> selectedAdapters = null;
 
 	public static List<IAdapter> show(String title, final ArtefactModel input, List<IAdapter> defaultAdapters) {
+		
+		
 		// Calculate adapters selected by default
 		if (defaultAdapters == null || defaultAdapters.isEmpty()) {
 			// Launch Progress dialog
@@ -59,6 +62,8 @@ public class AdaptersSelectionDialog {
 	}
 
 	public static List<IAdapter> show(String title, final Artefact input, List<IAdapter> defaultAdapters) {
+		
+		
 		// Calculate adapters selected by default
 		if (defaultAdapters == null || defaultAdapters.isEmpty()) {
 			// Launch Progress dialog
@@ -94,6 +99,8 @@ public class AdaptersSelectionDialog {
 	 *            adapters or null (it will be used for pre-selection)
 	 */
 	public static List<IAdapter> show(String title, List<IAdapter> correctAdapters) {
+		
+		
 
 		// No adapters
 		List<IAdapter> result = new ArrayList<IAdapter>();
@@ -117,6 +124,7 @@ public class AdaptersSelectionDialog {
 
 		// Sort
 		Collections.sort(allAdapters, new Comparator<IAdapter>() {
+			
 			@Override
 			public int compare(IAdapter o1, IAdapter o2) {
 				return AdaptersHelper.getAdapterName(o1).compareTo(AdaptersHelper.getAdapterName(o2));
@@ -152,7 +160,14 @@ public class AdaptersSelectionDialog {
 				result.add((IAdapter) a);
 			}
 		}
+		
+		selectedAdapters = result;
 		return result;
 	}
 
+	public static List<IAdapter> getSelectedAdapters(){
+		
+		
+		return selectedAdapters;
+	}
 }

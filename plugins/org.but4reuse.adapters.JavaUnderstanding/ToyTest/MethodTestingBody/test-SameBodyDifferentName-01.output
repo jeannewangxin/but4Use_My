@@ -1,0 +1,27 @@
+Block 0
+ Class: ToyTest.A Method:( getDirection2 | getDirection ){
+  return this.direction;
+}
+
+Block 1
+ Class: ToyTest.A Method:( SecondMethode ){
+  int x=3;
+  return this.direction;
+}
+
+Block 2
+ Class: ToyTest.A Method:( SecondMethode ){
+  int x=3;
+  return this.direction;
+}
+
+ Class: ToyTest.A Method:( ThirdMethode ){
+  int x=4;
+  return this.direction;
+}
+
+ Class: ToyTest.A Method:( FourthMethode ){
+  int x=4;
+  List<Integer> l=new ArrayList<>();
+  return this.direction;
+}

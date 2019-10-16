@@ -1,0 +1,22 @@
+Block 0
+ Class: ToyTest.A Method:getTiles
+ Class: ToyTest.A Method:setTiles
+ Class: ToyTest.A Method:getFrame
+ Class: ToyTest.A Method:setFrame
+ Class: ToyTest.A Method:getCurTime
+ Class: ToyTest.A Method:setCurTime
+ Class: ToyTest.A Method:getTime
+ Class: ToyTest.A Method:setTime
+ Class: ToyTest.A Method:think
+Block 1
+ Class: ToyTest.A Method:A
+ Class: ToyTest.A Method:getDirection
+ Class: ToyTest.A Method:isBLoop
+ Class: ToyTest.A Method:setBLoop
+ Class: ToyTest.A Method:isBAnimation
+ Class: ToyTest.A Method:setBAnimation
+Block 2
+ Class: ToyTest.A Method:B
+ Class: ToyTest.A Method:init
+
+ 

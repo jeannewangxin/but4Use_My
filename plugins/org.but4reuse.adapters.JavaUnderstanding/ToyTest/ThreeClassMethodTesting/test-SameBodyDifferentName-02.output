@@ -1,0 +1,12 @@
+Block 0
+ Class: ToyTest.A Method:( Different_Name_Same_body | Same_Name ){
+  return 2 * 3;
+}
+
+Block 1
+ Class: ToyTest.A Method:( Same_Name ){
+  int x=4;
+  return 2 * 3;
+}
+
+

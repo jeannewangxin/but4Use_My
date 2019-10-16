@@ -1,0 +1,4 @@
+Block 0
+ Class: ToyTest.A superclass:C
+Block 1
+ Class: ToyTest.A superclass:D

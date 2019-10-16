@@ -1,0 +1,39 @@
+Block 0
+ Class: ToyTest.A Method:getDirection3{
+  int x45=3;
+  int z=3;
+  return this.direction;
+}
+
+ Class: ToyTest.A Method:getDirection4{
+  int x45=3;
+  int z=3;
+  return this.direction;
+}
+
+Block 1
+ Class: ToyTest.A Method:getDirection2{
+  int x=3;
+  return this.direction;
+}
+
+ Class: ToyTest.A Method:think{
+  int d=6;
+}
+
+Block 2
+ Class: ToyTest.A Method:getDirection2{
+  int x2=3;
+  int x=3;
+  return this.direction;
+}
+
+ Class: ToyTest.A Method:think{
+  if (false) {
+    int res=5 + time;
+    int i=0;
+    while (i >= res) {
+      i++;
+    }
+  }
+}

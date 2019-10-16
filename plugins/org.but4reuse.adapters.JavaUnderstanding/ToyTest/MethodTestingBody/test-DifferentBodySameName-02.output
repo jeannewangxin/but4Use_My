@@ -1,0 +1,17 @@
+Block 0
+ Class: ToyTest.A Method:SecondMethode{
+  int x=4;
+  int y=5;
+  return this.direction;
+}
+
+Block 1
+ Class: ToyTest.A Method:getDirection2{
+  return this.direction;
+}
+
+Block 2
+ Class: ToyTest.A Method:getDirection{
+  return this.direction;
+}
+

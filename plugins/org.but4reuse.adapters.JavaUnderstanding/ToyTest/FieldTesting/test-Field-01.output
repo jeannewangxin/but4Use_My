@@ -1,0 +1,12 @@
+Block 0
+ Class: ToyTest.A Field: int frame
+ Class: ToyTest.A Field: int tiles
+ Class: ToyTest.A Field: long time
+ Class: ToyTest.A Field: long curTime
+Block 1
+ Class: ToyTest.A Field: int direction
+ Class: ToyTest.A Field: int maxDirection
+ Class: ToyTest.A Field: boolean bLoop
+ Class: ToyTest.A Field: boolean bAnimation
+ Class: ToyTest.A Field: boolean bRGB
+ Class: ToyTest.A Field: BufferedImage[][] images

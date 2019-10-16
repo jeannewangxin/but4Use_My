@@ -1,0 +1,18 @@
+Block 0
+ Class: ToyTest.A Method:( private | public)getDirection{
+  return this.direction;
+}
+
+ Class: ToyTest.A Method:( protected | private)getTiles{
+  return this.tiles;
+}
+
+Block 1
+ Class: ToyTest.A Method:( public)setTiles{
+  this.tiles=tiles;
+}
+
+Block 2
+ Class: ToyTest.A Method:( public)setTiles{
+  this.tiles=tiles;
+}

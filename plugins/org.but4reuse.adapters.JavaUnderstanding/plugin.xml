@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.but4reuse.adapters">
+      <adapter
+            class="org.but4reuse.adapters.java.elements.adapter.JavaUnderstandingAdapter"
+            icon="icons/code.gif"
+            id="java"
+            name="Java Understanding">
+         <elements>
+         	<element
+                  element="org.but4reuse.adapters.java.elements.FileElement">
+            </element>
+            <element
+                  element="org.but4reuse.adapters.java.elements.JavaElement">
+            </element>
+            <element
+                  element="org.but4reuse.adapters.java.elements.FolderElement">
+            </element>
+            <element
+                  element="org.but4reuse.adapters.java.elements.MethodElement">
+            </element>
+            <element
+                  element="org.but4reuse.adapters.java.elements.FieldElement">
+            </element>
+            <element
+                  element="org.but4reuse.adapters.java.elements.SuperClassElement">
+            </element>
+            <element
+                  element="org.but4reuse.adapters.java.elements.InterfacesElement">
+            </element>
+            <element
+                  element="org.but4reuse.adapters.java.elements.ImportElement">
+            </element>
+         </elements>
+      </adapter>
+   </extension>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            category="org.but4reuse.adapters.ui.preferences.AdaptersPreferencePage"
+            class="org.but4reuse.adapters.java.elements.preferences.JavaUnderstandingAdapterPreferencePage"
+            id="org.but4reuse.adapters.JavaUnderstanding.page"
+            name="JavaUnderstanding">
+      </page>
+   </extension>
+   <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer
+            class="org.but4reuse.adapters.java.elements.preferences.PreferenceInitializer">
+      </initializer>
+   </extension>
+</plugin>
