@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.but4reuse.adapters">
+      <adapter
+            class="adapters.CppAdapter"
+            icon="icons/cpp.png"
+            id="org.but4reuse.adapters.Ucpp"
+            name="C/C++">
+         <elements>
+            <element
+                  element="elements.ClassHeader">
+            </element>
+            <element
+                  element="elements.ElifDirective">
+            </element>
+            <element
+                  element="elements.ElseDirective">
+            </element>
+              
+           
+            <element
+                  element="elements.GlobalVar">
+            </element>
+            <element
+                  element="elements.HeaderFile">
+            </element>
+            <element
+                  element="elements.IfdefDirective">
+            </element>
+            <element
+                  element="elements.IfDirective">
+            </element>
+            <element
+                  element="elements.IfndefDirective">
+            </element>
+            <element
+                  element="elements.IncludeDirective">
+            </element>
+            <element
+                  element="elements.MacroDirective">
+            </element>
+            <element
+                  element="elements.SourceFile">
+            </element>
+            
+            <element
+                  element="elements.EndifDirective">
+            </element>
+            <element
+                  element="elements.CommentElement">
+            </element>
+            <element
+                  element="elements.TypeDefStruct">
+            </element>
+            <element
+                  element="elements.Field">
+            </element>
+            <element
+                  element="elements.Methods">
+            </element>
+
+ 			<element
+                  element="elements.FunctionImpl">
+            </element>
+
+			<element
+                  element="elements.StatementImpl">
+            </element>
+            <element
+                  element="elements.UsingNSpaceDir">
+            </element>
+         </elements>
+      </adapter>
+   </extension>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            category="org.but4reuse.adapters.ui.preferences.AdaptersPreferencePage"
+            class="preferences.CppCunderstandingPreferencePage"
+            id="org.but4reuse.adapters.cppCunderstanding.page1"
+            name="C/C++ Understanding">
+      </page>
+   </extension>
+
+</plugin>
