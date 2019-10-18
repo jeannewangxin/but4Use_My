@@ -26,7 +26,7 @@ public class WordCloudPreferences extends FieldEditorPreferencePage implements I
 	public static final String SYNONYM_WORDS = "SYNONYM_WORDS";
 	public static final String AUTORENAME_NB_WORDS = "AUTORENAME_NB_WORDS";
 	public static final String AUTORENAME_KEEP_PREVIOUS = "AUTORENAME_KEEP_PREVIOUS";
-
+	public static final String JAVA_REMOVE_GET_SET = "JAVA_REMOVE_GET_SET";
 	public WordCloudPreferences() {
 		setPreferenceStore(Activator.getDefault().getPreferenceStore());
 	}
@@ -79,6 +79,13 @@ public class WordCloudPreferences extends FieldEditorPreferencePage implements I
 		StringFieldEditor sfe3 = new StringFieldEditor(SYNONYM_WORDS,
 				"Synonyms (pairs of words 'house home' comma separated, first will be kept): ", getFieldEditorParent());
 		addField(sfe3);
+		
+		/*
+		// remove get and set
+		StringFieldEditor sfe4 = new StringFieldEditor(JAVA_REMOVE_GET_SET,
+				"Remove set and set (pairs of words 'setValue' will become value, we remove get and set): ", getFieldEditorParent());
+		addField(sfe4);
+		*/
 	}
 
 }

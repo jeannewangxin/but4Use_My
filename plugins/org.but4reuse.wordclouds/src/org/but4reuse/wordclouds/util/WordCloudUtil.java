@@ -269,5 +269,15 @@ public class WordCloudUtil {
 		}
 		return Arrays.asList(synonymWordsString.split(","));
 	}
+	
+	public static List<String> getJavaRemoveGetSet() {
+		List<String> javaRemoveGetSetWords = new ArrayList<String>();
+		String javaRemoveGetSetWordsString = Activator.getDefault().getPreferenceStore()
+				.getString(WordCloudPreferences.JAVA_REMOVE_GET_SET);
+		if (javaRemoveGetSetWordsString == null || javaRemoveGetSetWordsString.isEmpty()) {
+			return javaRemoveGetSetWords;
+		}
+		return Arrays.asList(javaRemoveGetSetWordsString.split(","));
+	}
 
 }

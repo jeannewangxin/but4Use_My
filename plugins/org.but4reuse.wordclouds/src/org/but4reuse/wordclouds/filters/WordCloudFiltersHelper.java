@@ -72,9 +72,12 @@ public class WordCloudFiltersHelper {
 	public static List<IWordsProcessing> getSortedSelectedFilters() {
 		Map<IWordsProcessing, Integer> map = new LinkedHashMap<IWordsProcessing, Integer>();
 		for (IWordsProcessing algo : getAllFilters()) {
+			System.out.println("algo name : "+algo.getClass().getName());
 			String name = getFilterName(algo);
+			System.out.println("filter name : "+name);
 			IPreferenceStore prefs = getPreferenceStore();
 			int priority = prefs.getInt(name);
+			System.out.println("filter priority : "+priority);
 			// 0 means not selected
 			if (priority > 0) {
 				map.put(algo, priority);

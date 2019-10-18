@@ -135,6 +135,14 @@
             class="org.but4reuse.wordclouds.filters.UserSynonymsFilter"
             name="Synonyms (user defined)">
       </filter>
+       <filter
+            class="org.but4reuse.wordclouds.filters.JavaRemoveGetSetFilter"
+            name="Java remove get and set">
+      </filter>
+       <filter
+            class="org.but4reuse.wordclouds.filters.JavaRemoveKeywordsFilter"
+            name="Java remove keywords">
+      </filter>
    </extension>
 
 </plugin>

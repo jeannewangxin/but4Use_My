@@ -21,6 +21,7 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
 		store.setDefault(WordCloudPreferences.MULTI_WORDS, "");
 		store.setDefault(WordCloudPreferences.SYNONYM_WORDS, "");
 		store.setDefault(WordCloudPreferences.AUTORENAME_NB_WORDS, 2);
+		//store.setDefault(WordCloudPreferences.JAVA_REMOVE_GET_SET,1);
 		store.setDefault(WordCloudPreferences.AUTORENAME_KEEP_PREVIOUS, false);
 
 		for (IWordsProcessing filter : WordCloudFiltersHelper.getAllFilters()) {
