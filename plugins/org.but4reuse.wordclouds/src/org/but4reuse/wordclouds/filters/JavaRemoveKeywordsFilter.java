@@ -14,12 +14,28 @@ public class JavaRemoveKeywordsFilter implements IWordsProcessing {
 	public List<String> processWords(List<String> words, IProgressMonitor monitor) {
 		ArrayList<String> blackList = new ArrayList<String>();
 		blackList.add("java");
+		
+		blackList.add("arraylist");
+		blackList.add("map");
+		blackList.add("set");
+		blackList.add("hashmap");
+		blackList.add("arraylist");
+		blackList.add("arraylist");
+		blackList.add("arraylist");
+		blackList.add("arraylist");
+		blackList.add("arraylist");
+		blackList.add("arraylist");
 		blackList.add("arraylist");
 		blackList.add("true");
 		blackList.add("false");
+		
+		
 		List<String> result=new ArrayList<String>();
 		for(String word : words) {
-			if(SourceVersion.isIdentifier(word) && !blackList.contains(word) && !SourceVersion.isKeyword(word)){
+			if(SourceVersion.isIdentifier(word) && !blackList.contains(word) 
+					&& !SourceVersion.isKeyword(word)
+					&& !word.contains("exception")
+					&& !word.contains("io")){
 				
 				result.add(word);
 			}
