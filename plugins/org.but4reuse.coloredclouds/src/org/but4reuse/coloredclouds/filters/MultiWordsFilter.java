@@ -3,7 +3,7 @@ package org.but4reuse.coloredclouds.filters;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.but4reuse.coloredclouds.util.WordCloudUtil;
+import org.but4reuse.coloredclouds.util.ColoredCloudUtil;
 import org.eclipse.core.runtime.IProgressMonitor;
 
 // TODO support multi words of more than 2 words?
@@ -21,7 +21,7 @@ public class MultiWordsFilter implements IWordsProcessing {
 	}
 
 	public List<String> getMultiWords() {
-		return WordCloudUtil.getUserDefinedMultiWords();
+		return ColoredCloudUtil.getUserDefinedMultiWords();
 	}
 
 	public List<String> processWords(List<String> words, List<String> multiWords) {

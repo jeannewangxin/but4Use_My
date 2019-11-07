@@ -6,10 +6,10 @@ import java.util.ArrayList;
 import org.but4reuse.adaptedmodel.Block;
 import org.but4reuse.adaptedmodel.manager.AdaptedModelManager;
 import org.but4reuse.coloredclouds.activator.Activator;
-import org.but4reuse.coloredclouds.preferences.WordCloudPreferences;
+import org.but4reuse.coloredclouds.preferences.ColoredCloudPreferences;
 import org.but4reuse.coloredclouds.util.AutomaticRenaming;
-import org.but4reuse.coloredclouds.util.WordCloudListener;
-import org.but4reuse.coloredclouds.util.WordCloudUtil;
+import org.but4reuse.coloredclouds.util.ColoredCloudListener;
+import org.but4reuse.coloredclouds.util.ColoredCloudUtil;
 import org.but4reuse.visualisation.helpers.VisualisationsHelper;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.swt.SWT;
@@ -43,12 +43,12 @@ import org.mcavallo.opencloud.Tag;
  * @author Arthur, aarkoub This class is an eclipse view.
  */
 
-public class WordCloudView extends ViewPart {
+public class ColoredCloudView extends ViewPart {
 
 	/**
 	 * The current WorldCloudVis.
 	 */
-	static private WordCloudView singleton = null;
+	static private ColoredCloudView singleton = null;
 
 	/**
 	 * The combo control in the view.
@@ -104,7 +104,7 @@ public class WordCloudView extends ViewPart {
 	/**
 	 * Default constructor.
 	 */
-	public WordCloudView() {
+	public ColoredCloudView() {
 
 		super();
 		singleton = this;
@@ -115,7 +115,7 @@ public class WordCloudView extends ViewPart {
 	 * 
 	 * @return The singleton
 	 */
-	public static WordCloudView getSingleton() {
+	public static ColoredCloudView getSingleton() {
 		return singleton;
 	}
 
@@ -177,7 +177,7 @@ public class WordCloudView extends ViewPart {
 
 	/**
 	 * This method will update the singleton. It will set the selected item at
-	 * index.\n The method will call WordCloudAction.getClouds() to get cloud at
+	 * index.\n The method will call ColoredCloudAction.getClouds() to get cloud at
 	 * the index "index" and fill the list control with strings contained in the
 	 * cloud.
 	 * 
@@ -205,18 +205,18 @@ public class WordCloudView extends ViewPart {
 
 		Cloud c = null;
 		lastIndex = index;
-		if (WordCloudView.getSingleton().getTabFolder().getSelectionIndex() == 1)
-			c = WordCloudVisualisation.getCloudsTFIDF().get(index);
+		if (ColoredCloudView.getSingleton().getTabFolder().getSelectionIndex() == 1)
+			c = ColoredCloudVisualisation.getCloudsTFIDF().get(index);
 		else
-			c = WordCloudVisualisation.getClouds().get(index);
+			c = ColoredCloudVisualisation.getClouds().get(index);
 
 		for (Tag t : c.tags())
 			singleton.getList().add(t.getName() + " - " + String.format("%.2f", t.getNormScore()));
 
-		WordCloudUtil.drawWordCloud(singleton.getSComposite(), c);
-		WordCloudUtil.drawWordCloud(singleton.getSCompositeTFIDF(), c);
-		addWordCloudListeners(singleton.getSComposite(), index);
-		addWordCloudListeners(singleton.getSCompositeTFIDF(), index);
+		ColoredCloudUtil.drawColoredCloud(singleton.getSComposite(), c);
+		ColoredCloudUtil.drawColoredCloud(singleton.getSCompositeTFIDF(), c);
+		addColoredCloudListeners(singleton.getSComposite(), index);
+		addColoredCloudListeners(singleton.getSCompositeTFIDF(), index);
 	}
 
 	@Override
@@ -317,15 +317,15 @@ public class WordCloudView extends ViewPart {
 			public void widgetSelected(SelectionEvent e) {
 				final Shell win = new Shell(Display.getCurrent().getActiveShell(), SWT.TITLE | SWT.CLOSE);
 				Cloud c = null;
-				int i = WordCloudView.getSingleton().getCombo().getSelectionIndex();
+				int i = ColoredCloudView.getSingleton().getCombo().getSelectionIndex();
 				String name = "Word Cloud " + AdaptedModelManager.getAdaptedModel().getOwnedBlocks().get(i).getName();
-				if (WordCloudView.getSingleton().getTabFolder().getSelectionIndex() == 0) {
+				if (ColoredCloudView.getSingleton().getTabFolder().getSelectionIndex() == 0) {
 					win.setSize(1000, 2000);
-					c = WordCloudVisualisation.getClouds().get(i);
+					c = ColoredCloudVisualisation.getClouds().get(i);
 
 				} else {
 					win.setSize(1000, 4000);
-					c = WordCloudVisualisation.getCloudsTFIDF().get(i);
+					c = ColoredCloudVisualisation.getCloudsTFIDF().get(i);
 					name += " TFIDF";
 				}
 
@@ -338,8 +338,8 @@ public class WordCloudView extends ViewPart {
 				win.open();
 				win.update();
 
-				WordCloudUtil.drawWordCloud(comp, c);
-				addWordCloudListeners(comp, i);
+				ColoredCloudUtil.drawColoredCloud(comp, c);
+				addColoredCloudListeners(comp, i);
 			}
 
 			@Override
@@ -358,10 +358,10 @@ public class WordCloudView extends ViewPart {
 
 				Cloud cloud = null;
 
-				if (WordCloudView.getSingleton().getTabFolder().getSelectionIndex() == 1)
-					cloud = WordCloudVisualisation.getCloudsTFIDF().get(lastIndex);
+				if (ColoredCloudView.getSingleton().getTabFolder().getSelectionIndex() == 1)
+					cloud = ColoredCloudVisualisation.getCloudsTFIDF().get(lastIndex);
 				else
-					cloud = WordCloudVisualisation.getClouds().get(lastIndex);
+					cloud = ColoredCloudVisualisation.getClouds().get(lastIndex);
 
 				// To select the directory
 				DirectoryDialog dirDialog = new DirectoryDialog(Display.getCurrent().getActiveShell());
@@ -370,13 +370,13 @@ public class WordCloudView extends ViewPart {
 				String selectedDir = dirDialog.open();
 				if (selectedDir != null) {
 					String path = selectedDir + File.separator + singleton.getCombo().getText();
-					if (WordCloudView.getSingleton().getTabFolder().getSelectionIndex() == 1) {
+					if (ColoredCloudView.getSingleton().getTabFolder().getSelectionIndex() == 1) {
 						path += "_tfidf";
 					}
 					path += ".png";
 
 					// To save the image
-					WordCloudUtil.saveCloud(cloud, path);
+					ColoredCloudUtil.saveCloud(cloud, path);
 				}
 			}
 
@@ -398,14 +398,14 @@ public class WordCloudView extends ViewPart {
 				case SWT.Selection:
 					// Check if frequency or tfidf is selected
 					java.util.List<Cloud> clouds = null;
-					if (WordCloudView.getSingleton().getTabFolder().getSelectionIndex() == 0) {
-						clouds = WordCloudVisualisation.getClouds();
+					if (ColoredCloudView.getSingleton().getTabFolder().getSelectionIndex() == 0) {
+						clouds = ColoredCloudVisualisation.getClouds();
 					} else {
-						clouds = WordCloudVisualisation.getCloudsTFIDF();
+						clouds = ColoredCloudVisualisation.getCloudsTFIDF();
 					}
 					// Launch the algorithm
 					int kWords = Activator.getDefault().getPreferenceStore()
-							.getInt(WordCloudPreferences.AUTORENAME_NB_WORDS);
+							.getInt(ColoredCloudPreferences.AUTORENAME_NB_WORDS);
 					java.util.List<String> names = AutomaticRenaming.renameAll(clouds, kWords);
 					// Update the names of the blocks
 					int i = 0;
@@ -413,7 +413,7 @@ public class WordCloudView extends ViewPart {
 					for (Block b : AdaptedModelManager.getAdaptedModel().getOwnedBlocks()) {
 						String newName = names.get(i);
 						boolean keepPreviousName = Activator.getDefault().getPreferenceStore()
-								.getBoolean(WordCloudPreferences.AUTORENAME_KEEP_PREVIOUS);
+								.getBoolean(ColoredCloudPreferences.AUTORENAME_KEEP_PREVIOUS);
 						if (keepPreviousName) {
 							newName = b.getName() + " " + newName;
 						}
@@ -425,7 +425,7 @@ public class WordCloudView extends ViewPart {
 					}
 					// Notify UI
 					if (somethingChanged) {
-						WordCloudView.update(combo.getSelectionIndex(), true);
+						ColoredCloudView.update(combo.getSelectionIndex(), true);
 						VisualisationsHelper.notifyVisualisations(AdaptedModelManager.getFeatureList(),
 								AdaptedModelManager.getAdaptedModel(), null, new NullProgressMonitor());
 					}
@@ -452,12 +452,12 @@ public class WordCloudView extends ViewPart {
 							continue;
 						names.add(bl.getName());
 					}
-					Cloud c = WordCloudVisualisation.getClouds().get(ind);
-					if (WordCloudView.getSingleton().getTabFolder().getSelectionIndex() == 1)
-						c = WordCloudVisualisation.getCloudsTFIDF().get(ind);
-					String name = WordCloudUtil.rename(names, c);
+					Cloud c = ColoredCloudVisualisation.getClouds().get(ind);
+					if (ColoredCloudView.getSingleton().getTabFolder().getSelectionIndex() == 1)
+						c = ColoredCloudVisualisation.getCloudsTFIDF().get(ind);
+					String name = ColoredCloudUtil.rename(names, c);
 					b.setName(name);
-					WordCloudView.update(combo.getSelectionIndex(), true);
+					ColoredCloudView.update(combo.getSelectionIndex(), true);
 					VisualisationsHelper.notifyVisualisations(AdaptedModelManager.getFeatureList(),
 							AdaptedModelManager.getAdaptedModel(), null, new NullProgressMonitor());
 					break;
@@ -483,7 +483,7 @@ public class WordCloudView extends ViewPart {
 					int ind = combo.getSelectionIndex();
 					Block b = AdaptedModelManager.getAdaptedModel().getOwnedBlocks().get(ind);
 					b.setName(text.getText());
-					WordCloudView.update(combo.getSelectionIndex(), true);
+					ColoredCloudView.update(combo.getSelectionIndex(), true);
 					VisualisationsHelper.notifyVisualisations(AdaptedModelManager.getFeatureList(),
 							AdaptedModelManager.getAdaptedModel(), null, new NullProgressMonitor());
 					break;
@@ -501,7 +501,7 @@ public class WordCloudView extends ViewPart {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				Combo c = (Combo) e.getSource();
-				WordCloudView.update(c.getSelectionIndex(), true);
+				ColoredCloudView.update(c.getSelectionIndex(), true);
 			}
 
 			@Override
@@ -522,7 +522,7 @@ public class WordCloudView extends ViewPart {
 				String newName = l.getItem(l.getSelectionIndex());
 				int ind = newName.indexOf(" - ");
 				b.setName(newName.substring(0, ind));
-				WordCloudView.update(combo.getSelectionIndex(), true);
+				ColoredCloudView.update(combo.getSelectionIndex(), true);
 				VisualisationsHelper.notifyVisualisations(AdaptedModelManager.getFeatureList(),
 						AdaptedModelManager.getAdaptedModel(), null, new NullProgressMonitor());
 			}
@@ -543,21 +543,21 @@ public class WordCloudView extends ViewPart {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				int ind = ((TabFolder) (e.getSource())).getSelectionIndex();
-				int i = WordCloudView.getSingleton().getCombo().getSelectionIndex();
-				WordCloudView.getSingleton().getList().removeAll();
+				int i = ColoredCloudView.getSingleton().getCombo().getSelectionIndex();
+				ColoredCloudView.getSingleton().getList().removeAll();
 				Cloud c = null;
 				if (ind == 0) {
-					c = WordCloudVisualisation.getClouds().get(i);
-					WordCloudUtil.drawWordCloud(cmp, c);
-					addWordCloudListeners(cmp, i);
+					c = ColoredCloudVisualisation.getClouds().get(i);
+					ColoredCloudUtil.drawColoredCloud(cmp, c);
+					addColoredCloudListeners(cmp, i);
 				} else {
-					c = WordCloudVisualisation.getCloudsTFIDF().get(i);
-					WordCloudUtil.drawWordCloud(cmpTFIDF, c);
-					addWordCloudListeners(cmpTFIDF, i);
+					c = ColoredCloudVisualisation.getCloudsTFIDF().get(i);
+					ColoredCloudUtil.drawColoredCloud(cmpTFIDF, c);
+					addColoredCloudListeners(cmpTFIDF, i);
 				}
 
 				for (Tag t : c.tags())
-					WordCloudView.getSingleton().getList()
+					ColoredCloudView.getSingleton().getList()
 							.add(t.getName() + " - " + String.format("%.2f", t.getNormScore()));
 
 			}
@@ -589,9 +589,9 @@ public class WordCloudView extends ViewPart {
 	 * @param composite
 	 *            containing the labels
 	 */
-	static private void addWordCloudListeners(Composite cloudComposite, int blockIndex) {
+	static private void addColoredCloudListeners(Composite cloudComposite, int blockIndex) {
 		for (final Control c : cloudComposite.getChildren()) {
-			c.addMouseListener(new WordCloudListener(blockIndex));
+			c.addMouseListener(new ColoredCloudListener(blockIndex));
 		}
 	}
 }

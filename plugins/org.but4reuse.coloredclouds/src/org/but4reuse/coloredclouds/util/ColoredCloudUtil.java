@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.but4reuse.coloredclouds.activator.Activator;
-import org.but4reuse.coloredclouds.preferences.WordCloudPreferences;
+import org.but4reuse.coloredclouds.preferences.ColoredCloudPreferences;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.GC;
@@ -24,7 +24,7 @@ import org.mcavallo.opencloud.Tag;
 /**
  * @author Arthur, aarkoub A Toolbox to draw word cloud
  */
-public class WordCloudUtil {
+public class ColoredCloudUtil {
 
 	/**
 	 * Draw the word cloud in the canvas can.
@@ -36,7 +36,7 @@ public class WordCloudUtil {
 	 *            canvas.
 	 */
 
-	public static void drawWordCloud(Composite cmp, Cloud cloud) {
+	public static void drawColoredCloud(Composite cmp, Cloud cloud) {
 		int x = 10, y = 10;
 		int maxH = 0;
 		cmp.setBackground(Display.getDefault().getSystemColor(SWT.COLOR_WHITE));
@@ -89,7 +89,7 @@ public class WordCloudUtil {
 		Composite toSave = new Composite(s, SWT.NORMAL);
 		toSave.setSize(1000, 1000);
 
-		WordCloudUtil.drawWordCloud(toSave, cloud);
+		ColoredCloudUtil.drawColoredCloud(toSave, cloud);
 
 		s.open();
 		
@@ -243,7 +243,7 @@ public class WordCloudUtil {
 	 */
 	public static List<String> getUserDefinedStopWords() {
 		List<String> stopWords = new ArrayList<String>();
-		String stopWordsString = Activator.getDefault().getPreferenceStore().getString(WordCloudPreferences.STOP_WORDS);
+		String stopWordsString = Activator.getDefault().getPreferenceStore().getString(ColoredCloudPreferences.STOP_WORDS);
 		if (stopWordsString == null || stopWordsString.isEmpty()) {
 			return stopWords;
 		}
@@ -253,7 +253,7 @@ public class WordCloudUtil {
 	public static List<String> getUserDefinedMultiWords() {
 		List<String> multiWords = new ArrayList<String>();
 		String multiWordsString = Activator.getDefault().getPreferenceStore()
-				.getString(WordCloudPreferences.MULTI_WORDS);
+				.getString(ColoredCloudPreferences.MULTI_WORDS);
 		if (multiWordsString == null || multiWordsString.isEmpty()) {
 			return multiWords;
 		}
@@ -263,7 +263,7 @@ public class WordCloudUtil {
 	public static List<String> getUserDefinedSynonyms() {
 		List<String> synonymWords = new ArrayList<String>();
 		String synonymWordsString = Activator.getDefault().getPreferenceStore()
-				.getString(WordCloudPreferences.SYNONYM_WORDS);
+				.getString(ColoredCloudPreferences.SYNONYM_WORDS);
 		if (synonymWordsString == null || synonymWordsString.isEmpty()) {
 			return synonymWords;
 		}
@@ -273,7 +273,7 @@ public class WordCloudUtil {
 	public static List<String> getJavaRemoveGetSet() {
 		List<String> javaRemoveGetSetWords = new ArrayList<String>();
 		String javaRemoveGetSetWordsString = Activator.getDefault().getPreferenceStore()
-				.getString(WordCloudPreferences.JAVA_REMOVE_GET_SET);
+				.getString(ColoredCloudPreferences.JAVA_REMOVE_GET_SET);
 		if (javaRemoveGetSetWordsString == null || javaRemoveGetSetWordsString.isEmpty()) {
 			return javaRemoveGetSetWords;
 		}

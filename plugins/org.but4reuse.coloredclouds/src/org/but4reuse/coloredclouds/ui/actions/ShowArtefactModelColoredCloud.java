@@ -11,7 +11,7 @@ import org.but4reuse.adapters.ui.AdaptersSelectionDialog;
 import org.but4reuse.artefactmodel.Artefact;
 import org.but4reuse.artefactmodel.ArtefactModel;
 import org.but4reuse.coloredclouds.util.Cloudifier;
-import org.but4reuse.coloredclouds.util.WordCloudUtil;
+import org.but4reuse.coloredclouds.util.ColoredCloudUtil;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.viewers.ISelection;
@@ -32,7 +32,7 @@ import org.mcavallo.opencloud.Cloud;
  * @author jabier.martinez
  */
 
-public class ShowArtefactModelWordCloud implements IObjectActionDelegate {
+public class ShowArtefactModelColoredCloud implements IObjectActionDelegate {
 
 	ISelection selection;
 
@@ -78,7 +78,7 @@ public class ShowArtefactModelWordCloud implements IObjectActionDelegate {
 						Composite comp = new Composite(win, SWT.NORMAL);
 						comp.setBounds(0, 0, win.getBounds().width, win.getBounds().height);
 
-						WordCloudUtil.drawWordCloud(comp, cloud);
+						ColoredCloudUtil.drawColoredCloud(comp, cloud);
 
 						win.open();
 						win.update();

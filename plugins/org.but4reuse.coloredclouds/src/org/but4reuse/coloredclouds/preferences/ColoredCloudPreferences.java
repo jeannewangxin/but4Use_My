@@ -2,7 +2,7 @@ package org.but4reuse.coloredclouds.preferences;
 
 import org.but4reuse.coloredclouds.activator.Activator;
 import org.but4reuse.coloredclouds.filters.IWordsProcessing;
-import org.but4reuse.coloredclouds.filters.WordCloudFiltersHelper;
+import org.but4reuse.coloredclouds.filters.ColoredCloudFiltersHelper;
 import org.eclipse.jface.preference.BooleanFieldEditor;
 import org.eclipse.jface.preference.FieldEditorPreferencePage;
 import org.eclipse.jface.preference.IntegerFieldEditor;
@@ -18,7 +18,7 @@ import org.eclipse.ui.IWorkbenchPreferencePage;
  * 
  * @author jabier.martinez
  */
-public class WordCloudPreferences extends FieldEditorPreferencePage implements IWorkbenchPreferencePage {
+public class ColoredCloudPreferences extends FieldEditorPreferencePage implements IWorkbenchPreferencePage {
 
 	public static final String WORDCLOUD_NB_W = "WORDCLOUD_NB_WORDS";
 	public static final String STOP_WORDS = "STOP_WORDS";
@@ -27,7 +27,7 @@ public class WordCloudPreferences extends FieldEditorPreferencePage implements I
 	public static final String AUTORENAME_NB_WORDS = "AUTORENAME_NB_WORDS";
 	public static final String AUTORENAME_KEEP_PREVIOUS = "AUTORENAME_KEEP_PREVIOUS";
 	public static final String JAVA_REMOVE_GET_SET = "JAVA_REMOVE_GET_SET";
-	public WordCloudPreferences() {
+	public ColoredCloudPreferences() {
 		setPreferenceStore(Activator.getDefault().getPreferenceStore());
 	}
 
@@ -41,8 +41,8 @@ public class WordCloudPreferences extends FieldEditorPreferencePage implements I
 	protected void createFieldEditors() {
 
 		// priority for filters
-		for (IWordsProcessing filter : WordCloudFiltersHelper.getAllFilters()) {
-			String name = WordCloudFiltersHelper.getFilterName(filter);
+		for (IWordsProcessing filter : ColoredCloudFiltersHelper.getAllFilters()) {
+			String name = ColoredCloudFiltersHelper.getFilterName(filter);
 			IntegerFieldEditor prio = new IntegerFieldEditor(name, name, getFieldEditorParent());
 			addField(prio);
 		}

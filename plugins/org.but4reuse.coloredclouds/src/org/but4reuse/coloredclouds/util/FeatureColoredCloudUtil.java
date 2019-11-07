@@ -6,7 +6,7 @@ import java.util.List;
 import org.but4reuse.featurelist.Feature;
 import org.but4reuse.utils.strings.StringUtils;
 
-public class FeatureWordCloudUtil {
+public class FeatureColoredCloudUtil {
 
 	/**
 	 * get the words of a feature

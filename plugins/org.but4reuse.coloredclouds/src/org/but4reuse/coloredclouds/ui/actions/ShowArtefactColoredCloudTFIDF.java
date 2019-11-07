@@ -12,7 +12,7 @@ import org.but4reuse.adapters.ui.AdaptersSelectionDialog;
 import org.but4reuse.artefactmodel.Artefact;
 import org.but4reuse.artefactmodel.ArtefactModel;
 import org.but4reuse.coloredclouds.util.Cloudifier;
-import org.but4reuse.coloredclouds.util.WordCloudUtil;
+import org.but4reuse.coloredclouds.util.ColoredCloudUtil;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
@@ -32,7 +32,7 @@ import org.mcavallo.opencloud.Cloud;
  *         create a new window where a word cloud will be drawn
  */
 
-public class ShowArtefactWordCloudTFIDF implements IObjectActionDelegate {
+public class ShowArtefactColoredCloudTFIDF implements IObjectActionDelegate {
 
 	ISelection selection;
 
@@ -93,7 +93,7 @@ public class ShowArtefactWordCloudTFIDF implements IObjectActionDelegate {
 								((ArtefactModel) artefactModel).getOwnedArtefacts().indexOf(selectedArtefact),
 								new NullProgressMonitor());
 
-						WordCloudUtil.drawWordCloud(comp, c);
+						ColoredCloudUtil.drawColoredCloud(comp, c);
 
 					}
 				}

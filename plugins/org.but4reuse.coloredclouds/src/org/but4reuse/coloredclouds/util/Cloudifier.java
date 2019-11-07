@@ -5,8 +5,8 @@ import java.util.List;
 
 import org.but4reuse.coloredclouds.activator.Activator;
 import org.but4reuse.coloredclouds.filters.IWordsProcessing;
-import org.but4reuse.coloredclouds.filters.WordCloudFiltersHelper;
-import org.but4reuse.coloredclouds.preferences.WordCloudPreferences;
+import org.but4reuse.coloredclouds.filters.ColoredCloudFiltersHelper;
+import org.but4reuse.coloredclouds.preferences.ColoredCloudPreferences;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.mcavallo.opencloud.Cloud;
 import org.mcavallo.opencloud.Tag;
@@ -16,7 +16,7 @@ public class Cloudifier {
 	public static Cloud cloudify(List<String> words, IProgressMonitor monitor) {
 		List<String> tags = processWords(words, monitor);
 		Cloud c = new Cloud();
-		c.setMaxTagsToDisplay(Activator.getDefault().getPreferenceStore().getInt(WordCloudPreferences.WORDCLOUD_NB_W));
+		c.setMaxTagsToDisplay(Activator.getDefault().getPreferenceStore().getInt(ColoredCloudPreferences.WORDCLOUD_NB_W));
 		c.setMaxWeight(50);
 		c.setMinWeight(5);
 		for (String s : tags) {
@@ -39,7 +39,7 @@ public class Cloudifier {
 		}
 
 		Cloud c = new Cloud();
-		c.setMaxTagsToDisplay(Activator.getDefault().getPreferenceStore().getInt(WordCloudPreferences.WORDCLOUD_NB_W));
+		c.setMaxTagsToDisplay(Activator.getDefault().getPreferenceStore().getInt(ColoredCloudPreferences.WORDCLOUD_NB_W));
 		c.setMaxWeight(50);
 		c.setMinWeight(5);
 
@@ -74,7 +74,7 @@ public class Cloudifier {
 	}
 
 	public static List<String> processWords(List<String> words, IProgressMonitor monitor) {
-		List<IWordsProcessing> processors = WordCloudFiltersHelper.getSortedSelectedFilters();
+		List<IWordsProcessing> processors = ColoredCloudFiltersHelper.getSortedSelectedFilters();
 		return processWords(words, processors, monitor);
 	}
 

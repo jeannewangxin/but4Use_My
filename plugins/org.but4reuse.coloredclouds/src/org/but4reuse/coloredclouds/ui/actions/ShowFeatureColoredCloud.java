@@ -4,10 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.but4reuse.coloredclouds.util.Cloudifier;
-import org.but4reuse.coloredclouds.util.FeatureWordCloudUtil;
-import org.but4reuse.coloredclouds.util.WordCloudUtil;
+import org.but4reuse.coloredclouds.util.FeatureColoredCloudUtil;
+import org.but4reuse.coloredclouds.util.ColoredCloudUtil;
 import org.but4reuse.featurelist.Feature;
-import org.but4reuse.featurelist.FeatureList;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.viewers.ISelection;
@@ -25,45 +24,36 @@ import org.mcavallo.opencloud.Cloud;
  *         create a new window where a word cloud will be drawn
  */
 
-public class ShowFeatureWordCloudTFIDF implements IObjectActionDelegate {
+public class ShowFeatureColoredCloud implements IObjectActionDelegate {
 
 	ISelection selection;
 
 	@Override
 	public void run(IAction action) {
 
-		List<List<String>> list = null;
-		FeatureList fList = null;
-
 		if (selection instanceof IStructuredSelection) {
 			for (Object feat : ((IStructuredSelection) selection).toArray()) {
 				if (feat instanceof Feature) {
 					Feature feature = ((Feature) feat);
+					List<String> words = new ArrayList<String>();
+					List<String> featureWords = FeatureColoredCloudUtil.getFeatureWords(feature);
+					words.addAll(featureWords);
 
-					if (list == null) {
-						list = new ArrayList<List<String>>();
-						fList = (FeatureList) feature.eContainer();
-
-						for (Feature f : fList.getOwnedFeatures()) {
-							list.add(FeatureWordCloudUtil.getFeatureWords(f));
-						}
-					}
+					Cloud cloud = Cloudifier.cloudify(words, new NullProgressMonitor());
 
 					final Shell win = new Shell(Display.getCurrent().getActiveShell(),
 							SWT.TITLE | SWT.CLOSE | SWT.RESIZE);
 					int widthWin = 600, heightWin = 600;
 					win.setSize(widthWin, heightWin);
-					win.setText("TF-IDF Word Cloud for feature " + feature.getName());
+					win.setText("Word Cloud for feature " + feature.getName());
 
 					Composite comp = new Composite(win, SWT.NORMAL);
 					comp.setBounds(0, 0, win.getBounds().width, win.getBounds().height);
 
 					win.open();
 					win.update();
-					Cloud c = Cloudifier.cloudifyTFIDF(list, fList.getOwnedFeatures().indexOf(feature),
-							new NullProgressMonitor());
-					WordCloudUtil.drawWordCloud(comp, c);
 
+					ColoredCloudUtil.drawColoredCloud(comp, cloud);
 				}
 			}
 		}

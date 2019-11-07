@@ -16,7 +16,7 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.swt.widgets.Display;
 import org.mcavallo.opencloud.Cloud;
 
-public class WordCloudVisualisation implements IVisualisation {
+public class ColoredCloudVisualisation implements IVisualisation {
 
 	/**
 	 * A list which contains a word cloud for each identified features.
@@ -24,7 +24,7 @@ public class WordCloudVisualisation implements IVisualisation {
 	private static List<Cloud> clouds;
 	private static List<Cloud> clouds_tfidf;
 
-	public WordCloudVisualisation() {
+	public ColoredCloudVisualisation() {
 	}
 
 	/**
@@ -87,7 +87,7 @@ public class WordCloudVisualisation implements IVisualisation {
 			@Override
 			public void run() {
 				WorkbenchUtils.forceShowView("org.but4reuse.wordclouds.view");
-				WordCloudView.update(0, false);
+				ColoredCloudView.update(0, false);
 			}
 		});
 	}

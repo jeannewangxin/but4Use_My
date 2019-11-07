@@ -9,7 +9,7 @@ import org.osgi.framework.BundleContext;
 public class Activator extends AbstractUIPlugin {
 
 	// The plug-in ID
-	public static final String PLUGIN_ID = "org.but4reuse.wordclouds"; //$NON-NLS-1$
+	public static final String PLUGIN_ID = "org.but4reuse.coloredclouds"; //$NON-NLS-1$
 
 	// The shared instance
 	private static Activator plugin;

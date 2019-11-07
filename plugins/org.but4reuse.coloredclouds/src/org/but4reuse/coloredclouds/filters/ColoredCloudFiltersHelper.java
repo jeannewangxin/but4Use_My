@@ -19,7 +19,7 @@ import org.eclipse.jface.preference.IPreferenceStore;
  * @author jabier.martinez
  * 
  */
-public class WordCloudFiltersHelper {
+public class ColoredCloudFiltersHelper {
 
 	public static final String FILTER_EXTENSIONPOINT = "org.but4reuse.wordclouds.filter";
 

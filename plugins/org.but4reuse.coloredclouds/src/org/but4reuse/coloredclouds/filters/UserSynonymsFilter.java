@@ -3,7 +3,7 @@ package org.but4reuse.coloredclouds.filters;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.but4reuse.coloredclouds.util.WordCloudUtil;
+import org.but4reuse.coloredclouds.util.ColoredCloudUtil;
 import org.eclipse.core.runtime.IProgressMonitor;
 
 /**
@@ -16,7 +16,7 @@ public class UserSynonymsFilter implements IWordsProcessing {
 
 	@Override
 	public List<String> processWords(List<String> words, IProgressMonitor monitor) {
-		List<String> synonymsWords = WordCloudUtil.getUserDefinedSynonyms();
+		List<String> synonymsWords = ColoredCloudUtil.getUserDefinedSynonyms();
 		return processWords(words, synonymsWords);
 	}
 
