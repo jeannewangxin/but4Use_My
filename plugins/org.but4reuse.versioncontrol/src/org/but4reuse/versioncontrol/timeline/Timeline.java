@@ -119,16 +119,18 @@ public class Timeline {
 			
 			try{
 				// Changement path :
-				//Files.createDirectories(Paths.get(path + "/wordclouds"));
-				Files.createDirectories(Paths.get("~/testWC/wordclouds"));
+				Files.createDirectories(Paths.get(path + "/wordclouds"));
+				//Files.createDirectories(Paths.get("~/testWC/wordclouds"));
 			}
 			catch(IOException e){
 				e.printStackTrace();
 			}
 			
 			// déplacé avant le for
-			String addedPath = "wordclouds/added_cloud.png";
-			String removedPath = "wordclouds/removed_cloud.png";
+			//String addedPath = "wordclouds/added_cloud.png";
+			//String removedPath = "wordclouds/removed_cloud.png";
+			String addedPath = "wordclouds/added_" + event.getEndCommit().getSha()+".png";
+			String removedPath = "wordclouds/removed_" + event.getEndCommit().getSha()+".png";
 			
 			if(event.getType() == FeatureEvent.Type.COMMIT){
 				WordCloudUtil.saveCloud(event.getAddedCloud(), path.replaceAll("\\\\", "/")+"/"+addedPath);
