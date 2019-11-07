@@ -75,7 +75,7 @@
          point="org.but4reuse.visualisation">
       <visualisation
             class="org.but4reuse.coloredclouds.visualisation.WordCloudVisualisation"
-            name="Word Cloud">
+            name="Colored Word Cloud">
       </visualisation>
    </extension>
    <extension
@@ -90,7 +90,7 @@
             category="org.but4reuse.visualisation.ui.page"
             class="org.but4reuse.coloredclouds.preferences.WordCloudPreferences"
             id="org.but4reuse.coloredclouds.page"
-            name="WordCloud">
+            name="ColoredCloud">
       </page>
    </extension>
    <extension

@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Visualisation Word Clouds
-Bundle-SymbolicName: org.but4reuse.wordclouds;singleton:=true
+Bundle-Name: Visualisation Colored Word Clouds
+Bundle-SymbolicName: org.but4reuse.coloredclouds;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: org.but4reuse.coloredclouds.activator.Activator
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
