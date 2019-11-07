@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Visualisation Colored Clouds
-Bundle-SymbolicName: org.but4reuse.coloredclouds;singleton:=true
+Bundle-Name: Visualisation Word Clouds
+Bundle-SymbolicName: org.but4reuse.wordclouds;singleton:=true
 Bundle-Version: 1.0.0.qualifier
-Bundle-Activator: org.but4reuse.coloredclouds.activator.Activator
+Bundle-Activator: org.but4reuse.wordclouds.activator.Activator
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Bundle-ClassPath: .,
@@ -16,6 +16,6 @@ Require-Bundle: org.eclipse.core.runtime,
  org.but4reuse.visualisation,
  org.but4reuse.adapters,
  org.but4reuse.adapters.ui
-Export-Package: org.but4reuse.coloredclouds.util,
+Export-Package: org.but4reuse.wordclouds.util,
  org.mcavallo.opencloud
 Bundle-Vendor: BUT4Reuse

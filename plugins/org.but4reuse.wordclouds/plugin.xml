@@ -74,7 +74,7 @@
    <extension
          point="org.but4reuse.visualisation">
       <visualisation
-            class="org.but4reuse.coloredclouds.visualisation.WordCloudVisualisation"
+            class="org.but4reuse.wordclouds.visualisation.WordCloudVisualisation"
             name="Word Cloud">
       </visualisation>
    </extension>
