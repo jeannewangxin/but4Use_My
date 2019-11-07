@@ -5,57 +5,57 @@
          point="org.eclipse.ui.popupMenus">
       <objectContribution
             adaptable="false"
-            id="org.but4reuse.wordclouds.ShowArtefactWordCloud"
+            id="org.but4reuse.wordtrees.ShowArtefactWordTree"
             objectClass="org.but4reuse.artefactmodel.Artefact">
          <action
-               class="org.but4reuse.wordclouds.ui.actions.ShowArtefactWordCloud"
+               class="org.but4reuse.wordtrees.ui.actions.ShowArtefactWordTree"
                icon="icons/cloud.png"
-               id="org.but4reuse.wordclouds.action1"
-               label="Show Word Cloud">
+               id="org.but4reuse.wordtrees.action1"
+               label="Show Word Tree">
          </action>
       </objectContribution>
       <objectContribution
             adaptable="false"
-            id="org.but4reuse.wordclouds.ShowFeatureWordCloud"
+            id="org.but4reuse.wordtrees.ShowFeatureWordTree"
             objectClass="org.but4reuse.featurelist.Feature">
          <action
-               class="org.but4reuse.wordclouds.ui.actions.ShowFeatureWordCloud"
+               class="org.but4reuse.wordtrees.ui.actions.ShowFeatureWordTree"
                icon="icons/cloud.png"
-               id="org.but4reuse.wordclouds.action2"
-               label="Show Word Cloud">
+               id="org.but4reuse.wordtrees.action2"
+               label="Show Word Tree">
          </action>
       </objectContribution>
       <objectContribution
             adaptable="false"
-            id="org.but4reuse.wordclouds.ShowArtefactWordCloudIDF"
+            id="org.but4reuse.wordtrees.ShowArtefactWordTreeIDF"
             objectClass="org.but4reuse.artefactmodel.Artefact">
          <action
-               class="org.but4reuse.wordclouds.ui.actions.ShowArtefactWordCloudTFIDF"
+               class="org.but4reuse.wordtrees.ui.actions.ShowArtefactWordTreeTFIDF"
                icon="icons/cloud.png"
-               id="org.but4reuse.wordclouds.action3"
-               label="Show TF-IDF Word Cloud">
+               id="org.but4reuse.wordtrees.action3"
+               label="Show TF-IDF Word Tree">
          </action>
       </objectContribution>
       <objectContribution
             adaptable="false"
-            id="org.but4reuse.wordclouds.ShowFeatureWordCloudIDF"
+            id="org.but4reuse.wordtrees.ShowFeatureWordTreeIDF"
             objectClass="org.but4reuse.featurelist.Feature">
          <action
-               class="org.but4reuse.wordclouds.ui.actions.ShowFeatureWordCloudTFIDF"
+               class="org.but4reuse.wordtrees.ui.actions.ShowFeatureWordTreeTFIDF"
                icon="icons/cloud.png"
-               id="org.but4reuse.wordclouds.action4"
+               id="org.but4reuse.wordtrees.action4"
                label="Show TF-IDF Word CLoud">
          </action>
       </objectContribution>
       <objectContribution
             adaptable="false"
-            id="org.but4reuse.wordclouds.ShowArtefactModelWordCloud"
+            id="org.but4reuse.wordtrees.ShowArtefactModelWordTree"
             objectClass="org.but4reuse.artefactmodel.ArtefactModel">
          <action
-               class="org.but4reuse.wordclouds.ui.actions.ShowArtefactModelWordCloud"
+               class="org.but4reuse.wordtrees.ui.actions.ShowArtefactModelWordTree"
                icon="icons/cloud.png"
-               id="org.but4reuse.wordclouds.action3"
-               label="Show Word Cloud">
+               id="org.but4reuse.wordtrees.action3"
+               label="Show Word Tree">
          </action>
       </objectContribution>
    </extension>
@@ -63,37 +63,37 @@
          point="org.eclipse.ui.views">
       <view
             category="org.but4reuse.views.category"
-            class="org.but4reuse.wordclouds.visualisation.WordCloudView"
+            class="org.but4reuse.wordtrees.visualisation.WordTreeView"
             icon="icons/cloud.png"
-            id="org.but4reuse.wordclouds.view"
-            name="WordClouds"
+            id="org.but4reuse.wordtrees.view"
+            name="WordTrees"
             restorable="true">
       </view>
    </extension>
    <extension
          point="org.but4reuse.visualisation">
       <visualisation
-            class="org.but4reuse.wordtrees.visualisation.WordCloudVisualisation"
-            name="Word Cloud">
+            class="org.but4reuse.wordtrees.visualisation.WordTreeVisualisation"
+            name="Word Tree">
       </visualisation>
    </extension>
    <extension
          point="org.eclipse.core.runtime.preferences">
       <initializer
-            class="org.but4reuse.wordclouds.preferences.PreferenceInitializer">
+            class="org.but4reuse.wordtrees.preferences.PreferenceInitializer">
       </initializer>
    </extension>
    <extension
          point="org.eclipse.ui.preferencePages">
       <page
             category="org.but4reuse.visualisation.ui.page"
-            class="org.but4reuse.wordclouds.preferences.WordCloudPreferences"
-            id="org.but4reuse.wordclouds.page"
-            name="WordCloud">
+            class="org.but4reuse.wordtrees.preferences.WordTreePreferences"
+            id="org.but4reuse.wordtrees.page"
+            name="WordTree">
       </page>
    </extension>
    <extension
-         point="org.but4reuse.wordclouds.filter">
+         point="org.but4reuse.wordtrees.filter">
       <filter
             class="org.but4reuse.wordtrees.filters.CamelCaseSplitter"
             name="CamelCase splitter">

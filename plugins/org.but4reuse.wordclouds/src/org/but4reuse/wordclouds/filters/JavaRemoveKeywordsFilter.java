@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.lang.model.SourceVersion;
+import javax.xml.transform.Source;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 
@@ -18,7 +19,7 @@ public class JavaRemoveKeywordsFilter implements IWordsProcessing {
 		blackList.add("false");
 		List<String> result=new ArrayList<String>();
 		for(String word : words) {
-			if(!SourceVersion.isIdentifier(word) && !blackList.contains(word)){
+			if(SourceVersion.isIdentifier(word) && !blackList.contains(word) && !SourceVersion.isKeyword(word)){
 				
 				result.add(word);
 			}
