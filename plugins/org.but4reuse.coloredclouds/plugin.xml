@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension-point id="org.but4reuse.coloredxlouds.filter" name="Filters" schema="schema/org.but4reuse.coloredxlouds.filter.exsd"/>
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            adaptable="false"
+            id="org.but4reuse.coloredxlouds.ShowArtefactWordCloud"
+            objectClass="org.but4reuse.artefactmodel.Artefact">
+         <action
+               class="org.but4reuse.coloredxlouds.ui.actions.ShowArtefactWordCloud"
+               icon="icons/cloud.png"
+               id="org.but4reuse.coloredxlouds.action1"
+               label="Show Word Cloud">
+         </action>
+      </objectContribution>
+      <objectContribution
+            adaptable="false"
+            id="org.but4reuse.coloredxlouds.ShowFeatureWordCloud"
+            objectClass="org.but4reuse.featurelist.Feature">
+         <action
+               class="org.but4reuse.coloredxlouds.ui.actions.ShowFeatureWordCloud"
+               icon="icons/cloud.png"
+               id="org.but4reuse.coloredxlouds.action2"
+               label="Show Word Cloud">
+         </action>
+      </objectContribution>
+      <objectContribution
+            adaptable="false"
+            id="org.but4reuse.coloredxlouds.ShowArtefactWordCloudIDF"
+            objectClass="org.but4reuse.artefactmodel.Artefact">
+         <action
+               class="org.but4reuse.coloredxlouds.ui.actions.ShowArtefactWordCloudTFIDF"
+               icon="icons/cloud.png"
+               id="org.but4reuse.coloredxlouds.action3"
+               label="Show TF-IDF Word Cloud">
+         </action>
+      </objectContribution>
+      <objectContribution
+            adaptable="false"
+            id="org.but4reuse.coloredxlouds.ShowFeatureWordCloudIDF"
+            objectClass="org.but4reuse.featurelist.Feature">
+         <action
+               class="org.but4reuse.coloredxlouds.ui.actions.ShowFeatureWordCloudTFIDF"
+               icon="icons/cloud.png"
+               id="org.but4reuse.coloredxlouds.action4"
+               label="Show TF-IDF Word CLoud">
+         </action>
+      </objectContribution>
+      <objectContribution
+            adaptable="false"
+            id="org.but4reuse.coloredxlouds.ShowArtefactModelWordCloud"
+            objectClass="org.but4reuse.artefactmodel.ArtefactModel">
+         <action
+               class="org.but4reuse.coloredxlouds.ui.actions.ShowArtefactModelWordCloud"
+               icon="icons/cloud.png"
+               id="org.but4reuse.coloredxlouds.action3"
+               label="Show Word Cloud">
+         </action>
+      </objectContribution>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            category="org.but4reuse.views.category"
+            class="org.but4reuse.coloredxlouds.visualisation.WordCloudView"
+            icon="icons/cloud.png"
+            id="org.but4reuse.coloredxlouds.view"
+            name="coloredxlouds"
+            restorable="true">
+      </view>
+   </extension>
+   <extension
+         point="org.but4reuse.visualisation">
+      <visualisation
+            class="org.but4reuse.coloredxlouds.visualisation.WordCloudVisualisation"
+            name="Word Cloud">
+      </visualisation>
+   </extension>
+   <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer
+            class="org.but4reuse.coloredxlouds.preferences.PreferenceInitializer">
+      </initializer>
+   </extension>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            category="org.but4reuse.visualisation.ui.page"
+            class="org.but4reuse.coloredxlouds.preferences.WordCloudPreferences"
+            id="org.but4reuse.coloredxlouds.page"
+            name="WordCloud">
+      </page>
+   </extension>
+   <extension
+         point="org.but4reuse.coloredxlouds.filter">
+      <filter
+            class="org.but4reuse.coloredxlouds.filters.CamelCaseSplitter"
+            name="CamelCase splitter">
+      </filter>
+      <filter
+            class="org.but4reuse.coloredxlouds.filters.IgnoreUpperCaseProcessing"
+            name="Ignore upper case">
+      </filter>
+      <filter
+            class="org.but4reuse.coloredxlouds.filters.MultiWordsFilter"
+            name="Multi words (user defined)">
+      </filter>
+      <filter
+            class="org.but4reuse.coloredxlouds.filters.NumbersFilter"
+            name="Remove numbers">
+      </filter>
+      <filter
+            class="org.but4reuse.coloredxlouds.filters.OneCharFilter"
+            name="Remove one char words">
+      </filter>
+      <filter
+            class="org.but4reuse.coloredxlouds.filters.PartOfSpeechTagsFilter"
+            name="Part of speech tags filter">
+      </filter>
+      <filter
+            class="org.but4reuse.coloredxlouds.filters.StemmingFilter"
+            name="Stemming filter">
+      </filter>
+      <filter
+            class="org.but4reuse.coloredxlouds.filters.StopWordsFilter"
+            name="Stop words (user defined)">
+      </filter>
+      <filter
+            class="org.but4reuse.coloredxlouds.filters.SynonymsFilter"
+            name="Synonyms wordnet (expensive)">
+      </filter>
+      <filter
+            class="org.but4reuse.coloredxlouds.filters.UserSynonymsFilter"
+            name="Synonyms (user defined)">
+      </filter>
+       <filter
+            class="org.but4reuse.coloredxlouds.filters.JavaRemoveGetSetFilter"
+            name="Java remove get and set">
+      </filter>
+       <filter
+            class="org.but4reuse.coloredxlouds.filters.JavaRemoveKeywordsFilter"
+            name="Java remove keywords">
+      </filter>
+   </extension>
+
+</plugin>
