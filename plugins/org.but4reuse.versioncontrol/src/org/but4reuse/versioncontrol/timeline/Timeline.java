@@ -112,25 +112,28 @@ public class Timeline {
 		StringBuilder added = new StringBuilder();
 		StringBuilder removed = new StringBuilder();
 		
+		//String addedPath = "wordclouds/added_cloud.png";
+		//String removedPath = "wordclouds/removed_cloud.png";
+
 		for(FeatureEvent event: events){
 			
 			try{
-				Files.createDirectories(Paths.get(path + "/wordclouds"));
+				// Changement path :
+				//Files.createDirectories(Paths.get(path + "/wordclouds"));
+				Files.createDirectories(Paths.get("~/testWC/wordclouds"));
 			}
 			catch(IOException e){
 				e.printStackTrace();
 			}
 			
-			
-			String addedPath = "wordclouds/added_" + event.getEndCommit().getSha()+".png";
-			String removedPath = "wordclouds/removed_" + event.getEndCommit().getSha()+".png";
+			// déplacé avant le for
+			String addedPath = "wordclouds/added_cloud.png";
+			String removedPath = "wordclouds/removed_cloud.png";
 			
 			if(event.getType() == FeatureEvent.Type.COMMIT){
 				WordCloudUtil.saveCloud(event.getAddedCloud(), path.replaceAll("\\\\", "/")+"/"+addedPath);
 				WordCloudUtil.saveCloud(event.getRemovedCloud(), path.replaceAll("\\\\", "/")+"/"+removedPath);
 			}
-			
-			
 			
 			// reuse string builders
 			added.setLength(0);

@@ -48,7 +48,7 @@ public class ColoredCloudUtil {
 		for (Tag t : cloud.tags()) {
 			Label l = new Label(cmp, SWT.NORMAL);
 			l.setForeground(Display.getDefault().getSystemColor(SWT.COLOR_BLACK));
-			l.setBackground(Display.getDefault().getSystemColor(SWT.COLOR_WHITE));
+			l.setBackground(Display.getDefault().getSystemColor(SWT.COLOR_BLUE));
 
 			Font f = new Font(Display.getCurrent(), "Arial", t.getWeightInt(), SWT.ITALIC);
 			l.setFont(f);

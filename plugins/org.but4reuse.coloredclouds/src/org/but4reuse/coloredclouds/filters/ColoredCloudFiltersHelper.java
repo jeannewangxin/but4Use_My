@@ -21,7 +21,7 @@ import org.eclipse.jface.preference.IPreferenceStore;
  */
 public class ColoredCloudFiltersHelper {
 
-	public static final String FILTER_EXTENSIONPOINT = "org.but4reuse.wordclouds.filter";
+	public static final String FILTER_EXTENSIONPOINT = "org.but4reuse.coloredclouds.filter";
 
 	static List<IWordsProcessing> cache_wordsprocessing;
 
