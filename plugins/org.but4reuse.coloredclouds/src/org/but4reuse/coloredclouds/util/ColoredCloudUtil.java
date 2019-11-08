@@ -1,11 +1,14 @@
 package org.but4reuse.coloredclouds.util;
 
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 import org.but4reuse.coloredclouds.activator.Activator;
 import org.but4reuse.coloredclouds.preferences.ColoredCloudPreferences;
+import org.but4reuse.featurelist.Feature;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.GC;
@@ -47,8 +50,8 @@ public class ColoredCloudUtil {
 		int spaceHint = 10;
 		for (Tag t : cloud.tags()) {
 			Label l = new Label(cmp, SWT.NORMAL);
-			l.setForeground(Display.getDefault().getSystemColor(SWT.COLOR_BLACK));
-			l.setBackground(Display.getDefault().getSystemColor(SWT.COLOR_BLUE));
+			l.setForeground(Display.getDefault().getSystemColor(SWT.COLOR_RED));
+			l.setBackground(Display.getDefault().getSystemColor(SWT.COLOR_WHITE));
 
 			Font f = new Font(Display.getCurrent(), "Arial", t.getWeightInt(), SWT.ITALIC);
 			l.setFont(f);
