@@ -23,6 +23,8 @@ import org.but4reuse.wordclouds.util.WordCloudUtil;
 public class Timeline {
 
 	private final String HEADER;
+	
+	private final String UNITEDHEADER;
 
 	private final String FOOTER = " window.timeline = new TL.Timeline('timeline-embed', timeline_json);\n" + 
 			"\n" + 
@@ -55,6 +57,37 @@ public class Timeline {
 				"  <head>\n" + 
 				"    <meta charset='UTF-8'>\n" + 
 				"    <title>" + headline + " timeline</title>\n" + 
+				"    <link title='timeline-styles' rel='stylesheet' href='https://cdn.knightlab.com/libs/timeline3/latest/css/timeline.css'>\n" + 
+				"    <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css\">\n" + 
+				"\n" + 
+				"  </head>\n" + 
+				"\n" + 
+				"  <body>\n" + 
+				"    <style>\n" + 
+				"      .new-feature { color: #66BB6A; }\n" + 
+				"      .removed-feature { color: #EF5350; }\n" + 
+				"      .tag { color: #42A5F5; }\n" + 
+				"\n" + 
+				"    </style>    \n" + 
+				"    <div id='timeline-embed' style='width: 100%; height: 600px'></div>\n" + 
+				"  </body>\n" + 
+				"\n" + 
+				"\n" + 
+				"\n" + 
+				"  <script src='https://cdn.knightlab.com/libs/timeline3/latest/js/timeline.js'></script>\n" + 
+				"\n" + 
+				"  <script type='text/javascript'>\n" + 
+				"\n" + 
+				"    var timeline_json = ";
+		
+		
+		
+		UNITEDHEADER = "<!DOCTYPE html>\n" + 
+				"<html>\n" + 
+				"\n" + 
+				"  <head>\n" + 
+				"    <meta charset='UTF-8'>\n" + 
+				"    <title>" + headline + " 2timeline</title>\n" + 
 				"    <link title='timeline-styles' rel='stylesheet' href='https://cdn.knightlab.com/libs/timeline3/latest/css/timeline.css'>\n" + 
 				"    <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css\">\n" + 
 				"\n" + 
@@ -120,8 +153,6 @@ public class Timeline {
 		
 		StringBuilder added = new StringBuilder();
 		StringBuilder removed = new StringBuilder();
-		StringBuilder unitedAdded = new StringBuilder();
-		StringBuilder unitedRemoved = new StringBuilder();
 		
 		String unitedPath = "wordclouds/united_cloud.png";
 		String removedUnitedPath = "wordclouds/removedunited_cloud.png";
@@ -235,7 +266,7 @@ public class Timeline {
 					"                    }\n" + 
 					"                },");
 		}
-		
+		 
 		
 		// end features
 		body.append("\n     ]\n" + 
@@ -246,7 +277,7 @@ public class Timeline {
 		
 		try (BufferedWriter br = new BufferedWriter(new FileWriter(Paths.get(path, headline + ".html").toFile()))) {
 			
-			br.write(HEADER + unitedBody + FOOTER);
+			br.write(HEADER + body + FOOTER);
 			
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -254,7 +285,7 @@ public class Timeline {
 		
 		try (BufferedWriter br = new BufferedWriter(new FileWriter(Paths.get(path, headline + ".html").toFile()))) {
 			
-			br.write(HEADER + body + FOOTER);
+			br.write(UNITEDHEADER + unitedBody + FOOTER);
 			
 		} catch (IOException e) {
 			e.printStackTrace();
