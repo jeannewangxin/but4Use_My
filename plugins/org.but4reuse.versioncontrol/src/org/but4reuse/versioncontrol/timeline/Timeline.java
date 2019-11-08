@@ -120,6 +120,8 @@ public class Timeline {
 		
 		StringBuilder added = new StringBuilder();
 		StringBuilder removed = new StringBuilder();
+		StringBuilder unitedAdded = new StringBuilder();
+		StringBuilder unitedRemoved = new StringBuilder();
 		
 		String unitedPath = "wordclouds/united_cloud.png";
 		String removedUnitedPath = "wordclouds/removedunited_cloud.png";
@@ -144,8 +146,10 @@ public class Timeline {
 			if(event.getType() == FeatureEvent.Type.COMMIT){
 				WordCloudUtil.saveCloud(event.getAddedCloud(), path.replaceAll("\\\\", "/")+"/"+addedPath);
 				WordCloudUtil.saveCloud(event.getRemovedCloud(), path.replaceAll("\\\\", "/")+"/"+removedPath);
+				/**/
 				WordCloudUtil.saveCloud(event.getAddedCloud(), path.replaceAll("\\\\", "/")+"/"+unitedPath);
 				WordCloudUtil.saveCloud(event.getRemovedCloud(), path.replaceAll("\\\\", "/")+"/"+removedUnitedPath);
+				/**/
 			}
 			
 			// reuse string builders
@@ -242,7 +246,7 @@ public class Timeline {
 		
 		try (BufferedWriter br = new BufferedWriter(new FileWriter(Paths.get(path, headline + ".html").toFile()))) {
 			
-			br.write(HEADER + body + FOOTER);
+			br.write(HEADER + unitedBody + FOOTER);
 			
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -250,7 +254,7 @@ public class Timeline {
 		
 		try (BufferedWriter br = new BufferedWriter(new FileWriter(Paths.get(path, headline + ".html").toFile()))) {
 			
-			br.write(HEADER + unitedBody + FOOTER);
+			br.write(HEADER + body + FOOTER);
 			
 		} catch (IOException e) {
 			e.printStackTrace();
