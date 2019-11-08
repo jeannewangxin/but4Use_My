@@ -104,9 +104,18 @@ public class Timeline {
 				"                }\n" + 
 				"            },");
 		
+		StringBuilder unitedBody = new StringBuilder("{\n");
+		unitedBody.append("            'title': {\n" + 
+				"                'text': {\n" + 
+				"                    'headline': '" + headline + "',\n" + 
+				"                    'text': '" + headlineBody + "'\n" + 
+				"                }\n" + 
+				"            },");
+		
 		
 		// timeline events
 		body.append("'events': [");
+		unitedBody.append("'events': [");
 		
 		
 		StringBuilder added = new StringBuilder();
@@ -133,8 +142,8 @@ public class Timeline {
 			String removedPath = "wordclouds/removed_" + event.getEndCommit().getSha()+".png";
 			
 			if(event.getType() == FeatureEvent.Type.COMMIT){
-//				WordCloudUtil.saveCloud(event.getAddedCloud(), path.replaceAll("\\\\", "/")+"/"+addedPath);
-//				WordCloudUtil.saveCloud(event.getRemovedCloud(), path.replaceAll("\\\\", "/")+"/"+removedPath);
+				WordCloudUtil.saveCloud(event.getAddedCloud(), path.replaceAll("\\\\", "/")+"/"+addedPath);
+				WordCloudUtil.saveCloud(event.getRemovedCloud(), path.replaceAll("\\\\", "/")+"/"+removedPath);
 				WordCloudUtil.saveCloud(event.getAddedCloud(), path.replaceAll("\\\\", "/")+"/"+unitedPath);
 				WordCloudUtil.saveCloud(event.getRemovedCloud(), path.replaceAll("\\\\", "/")+"/"+removedUnitedPath);
 			}
@@ -198,7 +207,7 @@ public class Timeline {
 			text += "<div><strong>Commit message: </strong>" +
 					event.getEndCommit().getMessage().replaceAll("\\r\\n|\\r|\\n", "<br>") + "</div>";
 			
-			/*body.append("{\n" + 
+			body.append("{\n" + 
 					"                    'start_date': {\n" + 
 					"                        'month': '" + (cal.get(Calendar.MONTH) + 1) + "',\n" + 
 					"                        'day': '" + cal.get(Calendar.DAY_OF_MONTH) + "',\n" + 
@@ -208,9 +217,9 @@ public class Timeline {
 					"                        'headline': '" + eventHeadline + "',\n" + 
 					"                        'text': '" + text + "'\n" + 
 					"                    }\n" + 
-					"                },");*/
+					"                },");
 			
-			body.append("{\n" + 
+			unitedBody.append("{\n" + 
 					"                    'start_date': {\n" + 
 					"                        'month': '" + (cal.get(Calendar.MONTH) + 1) + "',\n" + 
 					"                        'day': '" + cal.get(Calendar.DAY_OF_MONTH) + "',\n" + 
@@ -231,6 +240,14 @@ public class Timeline {
 		try (BufferedWriter br = new BufferedWriter(new FileWriter(Paths.get(path, headline + ".html").toFile()))) {
 			
 			br.write(HEADER + body + FOOTER);
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		try (BufferedWriter br = new BufferedWriter(new FileWriter(Paths.get(path, headline + ".html").toFile()))) {
+			
+			br.write(HEADER + unitedBody + FOOTER);
 			
 		} catch (IOException e) {
 			e.printStackTrace();
