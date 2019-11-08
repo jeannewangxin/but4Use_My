@@ -237,6 +237,9 @@ public class Timeline {
 		body.append("\n     ]\n" + 
 				"        };\n");
 		
+		unitedBody.append("\n     ]\n" + 
+				"        };\n");
+		
 		try (BufferedWriter br = new BufferedWriter(new FileWriter(Paths.get(path, headline + ".html").toFile()))) {
 			
 			br.write(HEADER + body + FOOTER);
