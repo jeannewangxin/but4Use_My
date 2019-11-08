@@ -112,8 +112,8 @@ public class Timeline {
 		StringBuilder added = new StringBuilder();
 		StringBuilder removed = new StringBuilder();
 		
-		//String addedPath = "wordclouds/added_cloud.png";
-		//String removedPath = "wordclouds/removed_cloud.png";
+		String unitedPath = "wordclouds/united_cloud.png";
+		String removedUnitedPath = "wordclouds/removedunited_cloud.png";
 
 		for(FeatureEvent event: events){
 			
@@ -149,6 +149,10 @@ public class Timeline {
 											
 			String eventHeadline = null;
 			
+			/**/
+			String globalEventHeadline = null;
+			/**/
+			
 			String text = "<div><strong>Commit id: </strong>" + event.getEndCommit().getSha();					
 			
 			if(event.getType() == FeatureEvent.Type.COMMIT){
@@ -166,15 +170,23 @@ public class Timeline {
 				
 				
 				eventHeadline ="<div><br/><strong> Added Features </strong> " +
-							"<div><img src=\""+addedPath+"\"></div>" +
-							"<strong> Removed Features </strong> " +
-							"<div><img src=\""+removedPath+"\"></div></div>";
-				
+						"<div><img src=\""+addedPath+"\"></div>" +
+						"<strong> Removed Features </strong> " +
+						"<div><img src=\""+removedPath+"\"></div></div>";
+			
+				globalEventHeadline ="<div><br/><strong> Added Features </strong> " +
+						"<div><img src=\""+unitedPath+"\"></div>" +
+						"<strong> Removed Features </strong> " +
+						"<div><img src=\""+removedUnitedPath+"\"></div></div>";
+			
 								
 			}
 			else if (event.getType() == FeatureEvent.Type.TAG){
 				/* tag style */
 				eventHeadline = "<span class=\"fa fa-info tag\" aria-hidden=\"true\"></span>" + event.getAddedFeatures().get(0);
+				/*   . . . - - - . . .  */
+				globalEventHeadline = "<span class=\"fa fa-info tag\" aria-hidden=\"true\"></span>" + event.getAddedFeatures().get(0);
+				/*   ... --- .-. - . --..     -- --- ..     -.. .     .-.. .-   */
 				
 			}
 			else{
@@ -184,7 +196,7 @@ public class Timeline {
 			text += "<div><strong>Commit message: </strong>" +
 					event.getEndCommit().getMessage().replaceAll("\\r\\n|\\r|\\n", "<br>") + "</div>";
 			
-			body.append("{\n" + 
+			/*body.append("{\n" + 
 					"                    'start_date': {\n" + 
 					"                        'month': '" + (cal.get(Calendar.MONTH) + 1) + "',\n" + 
 					"                        'day': '" + cal.get(Calendar.DAY_OF_MONTH) + "',\n" + 
@@ -192,6 +204,18 @@ public class Timeline {
 					"                    },\n" + 
 					"                    'text': {\n" + 
 					"                        'headline': '" + eventHeadline + "',\n" + 
+					"                        'text': '" + text + "'\n" + 
+					"                    }\n" + 
+					"                },");*/
+			
+			body.append("{\n" + 
+					"                    'start_date': {\n" + 
+					"                        'month': '" + (cal.get(Calendar.MONTH) + 1) + "',\n" + 
+					"                        'day': '" + cal.get(Calendar.DAY_OF_MONTH) + "',\n" + 
+					"                        'year': '" + cal.get(Calendar.YEAR) + "'\n" + 
+					"                    },\n" + 
+					"                    'text': {\n" + 
+					"                        'headline': '" + globalEventHeadline + "',\n" + 
 					"                        'text': '" + text + "'\n" + 
 					"                    }\n" + 
 					"                },");
