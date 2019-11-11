@@ -558,7 +558,7 @@ public class WordCloudView extends ViewPart {
 
 				for (Tag t : c.tags())
 					WordCloudView.getSingleton().getList()
-							.add(t.getName() + " - " + String.format("%.2f", t.getNormScore()));
+					.add(t.getName() + " - " + String.format("%.2f", t.getNormScore()));
 
 			}
 

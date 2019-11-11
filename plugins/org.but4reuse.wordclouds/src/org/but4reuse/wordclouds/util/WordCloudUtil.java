@@ -2,11 +2,13 @@ package org.but4reuse.wordclouds.util;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 import org.but4reuse.wordclouds.activator.Activator;
 import org.but4reuse.wordclouds.preferences.WordCloudPreferences;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.GC;
 import org.eclipse.swt.graphics.Image;
@@ -35,12 +37,19 @@ public class WordCloudUtil {
 	 *            This cloud contains strings that you want to draw in your
 	 *            canvas.
 	 */
-
+	public static int[] colors = {SWT.COLOR_BLACK, SWT.COLOR_BLUE, SWT.COLOR_GREEN, SWT.COLOR_RED, 
+			SWT.COLOR_CYAN, SWT.COLOR_DARK_YELLOW, SWT.COLOR_MAGENTA, SWT.COLOR_DARK_BLUE, 
+			SWT.COLOR_DARK_GREEN, SWT.COLOR_DARK_RED, SWT.COLOR_DARK_CYAN, SWT.COLOR_DARK_MAGENTA};
+	
+	public static HashMap<Tag, Integer> coloredTags = new HashMap<>();
+	public static int color = 0;
+	
 	public static void drawWordCloud(Composite cmp, Cloud cloud) {
 		int x = 10, y = 10;
 		int maxH = 0;
+		
 		cmp.setBackground(Display.getDefault().getSystemColor(SWT.COLOR_WHITE));
-
+		
 		for (Control c : cmp.getChildren())
 			c.dispose();
 		cmp.update();
@@ -48,8 +57,43 @@ public class WordCloudUtil {
 		for (Tag t : cloud.tags()) {
 			Label l = new Label(cmp, SWT.NORMAL);
 			l.setForeground(Display.getDefault().getSystemColor(SWT.COLOR_BLACK));
-			l.setBackground(Display.getDefault().getSystemColor(SWT.COLOR_WHITE));
+			Font f = new Font(Display.getCurrent(), "Arial", t.getWeightInt(), SWT.ITALIC);
+			l.setFont(f);
+			l.setText(t.getName());
+			l.setToolTipText(String.format("%.2f", t.getScore()));
+			l.pack();
 
+			if (x + l.getBounds().width > cmp.getBounds().width * 0.70 - 25) {
+				x = 10;
+				y += maxH + spaceHint;
+				maxH = 0;
+			}
+
+			if (maxH < l.getBounds().height)
+				maxH = l.getBounds().height;
+
+			l.setLocation(x, y);
+			x += spaceHint + l.getBounds().width;
+			
+			coloredTags.put(t, color);
+		}
+		color++;
+	}
+	
+	public static void drawWordCloud(Composite cmp) {
+		int x = 10, y = 10;
+		int maxH = 0;
+		
+		cmp.setBackground(Display.getDefault().getSystemColor(SWT.COLOR_WHITE));
+		
+		for (Control c : cmp.getChildren())
+			c.dispose();
+		cmp.update();
+		int spaceHint = 10;
+		for (Tag t : coloredTags.keySet()) {
+			Label l = new Label(cmp, SWT.NORMAL);
+			l.setForeground(Display.getDefault().getSystemColor(colors[coloredTags.get(t)%colors.length]));
+			//l.setBackground(Display.getDefault().getSystemColor(SWT.COLOR_WHITE));
 			Font f = new Font(Display.getCurrent(), "Arial", t.getWeightInt(), SWT.ITALIC);
 			l.setFont(f);
 			l.setText(t.getName());
@@ -68,8 +112,8 @@ public class WordCloudUtil {
 			l.setLocation(x, y);
 			x += spaceHint + l.getBounds().width;
 		}
-
 	}
+
 
 	/**
 	 * 
@@ -127,6 +171,51 @@ public class WordCloudUtil {
 
 	}
 
+	public static void saveCloud(String path) {
+
+		Shell s = new Shell(Display.getDefault());
+		s.setLayout(new FillLayout());
+
+		Composite toSave = new Composite(s, SWT.NORMAL);
+		toSave.setSize(1000, 1000);
+
+		WordCloudUtil.drawWordCloud(toSave);
+
+		s.open();
+		
+		// Get the real size, otherwise a lot of white space in the
+		// margins
+		int maxWidth = 10;
+		int maxHeight = 10;
+		for (Control c : toSave.getChildren()) {
+			int x = c.getBounds().x + c.getBounds().width;
+			int y = c.getBounds().y + c.getBounds().height;
+			if (x > maxWidth) {
+				maxWidth = x;
+			}
+			if (y > maxHeight) {
+				maxHeight = y;
+			}
+		}
+
+		// a little bit of margin
+		maxWidth += 10;
+		maxHeight += 10;
+		s.setSize(maxWidth * 2, maxHeight * 2);
+		Image image = new Image(s.getDisplay(), maxWidth, maxHeight);
+		ImageLoader loader = new ImageLoader();
+
+		GC gc = new GC(image);
+		toSave.print(gc);
+
+		loader.data = new ImageData[] { image.getImageData() };
+		loader.save(path, SWT.IMAGE_PNG);
+
+		gc.dispose();
+
+		s.close();
+	}
+	
 	/**
 	 * 
 	 * It'll check if a name is already used as name.

@@ -266,6 +266,8 @@ public class Timeline {
 					"                    }\n" + 
 					"                },");
 		}
+		
+		WordCloudUtil.saveCloud(path.replaceAll("\\\\", "/")+"/"+"wordclouds/added_cloud.png");
 		 
 		
 		// end features

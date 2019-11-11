@@ -1,8 +1,10 @@
 package org.but4reuse.wordclouds.ui.actions;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
+import org.but4reuse.wordclouds.util.WordCloudUtil;
 import org.but4reuse.featurelist.Feature;
 import org.but4reuse.featurelist.FeatureList;
 import org.but4reuse.wordclouds.util.Cloudifier;
@@ -48,6 +50,7 @@ public class ShowFeatureWordCloudTFIDF implements IObjectActionDelegate {
 							list.add(FeatureWordCloudUtil.getFeatureWords(f));
 						}
 					}
+					
 
 					final Shell win = new Shell(Display.getCurrent().getActiveShell(),
 							SWT.TITLE | SWT.CLOSE | SWT.RESIZE);
@@ -66,6 +69,31 @@ public class ShowFeatureWordCloudTFIDF implements IObjectActionDelegate {
 
 				}
 			}
+			
+			// for identifying colors
+			/*int colorId=0;
+			for(List<String> l :list) {
+				for(String w : l) {
+					if(!coloredWords.containsKey(w))
+						coloredWords.put(w, colorId);
+				}
+				colorId++;
+			}*/
+			
+			final Shell win = new Shell(Display.getCurrent().getActiveShell(),
+					SWT.TITLE | SWT.CLOSE | SWT.RESIZE);
+			int widthWin = 600, heightWin = 600;
+
+			win.setSize(widthWin, heightWin);
+			win.setText("TF-IDF Global Word Cloud");
+
+			Composite comp = new Composite(win, SWT.NORMAL);
+			comp.setBounds(0, 0, win.getBounds().width, win.getBounds().height);
+
+			WordCloudUtil.drawWordCloud(comp);
+			
+			win.open();
+			win.update();
 		}
 	}
 
