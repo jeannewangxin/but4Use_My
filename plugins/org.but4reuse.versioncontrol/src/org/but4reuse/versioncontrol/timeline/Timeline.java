@@ -175,12 +175,12 @@ public class Timeline {
 			String removedPath = "wordclouds/removed_" + event.getEndCommit().getSha()+".png";
 			
 			if(event.getType() == FeatureEvent.Type.COMMIT){
-				WordCloudUtil.saveCloud(event.getAddedCloud(), path.replaceAll("\\\\", "/")+"/"+addedPath);
-				WordCloudUtil.saveCloud(event.getRemovedCloud(), path.replaceAll("\\\\", "/")+"/"+removedPath);
-				/**/
-				WordCloudUtil.saveCloud(event.getAddedCloud(), path.replaceAll("\\\\", "/")+"/"+unitedPath);
-				WordCloudUtil.saveCloud(event.getRemovedCloud(), path.replaceAll("\\\\", "/")+"/"+removedUnitedPath);
-				/**/
+				WordCloudUtil.saveNewCloud(event.getAddedCloud(), path.replaceAll("\\\\", "/")+"/"+addedPath);
+				WordCloudUtil.saveNewCloud(event.getRemovedCloud(), path.replaceAll("\\\\", "/")+"/"+removedPath);
+//				/**/
+//				WordCloudUtil.saveCloud(event.getAddedCloud(), path.replaceAll("\\\\", "/")+"/"+unitedPath);
+//				WordCloudUtil.saveCloud(event.getRemovedCloud(), path.replaceAll("\\\\", "/")+"/"+removedUnitedPath);
+//				/**/
 			}
 			
 			// reuse string builders

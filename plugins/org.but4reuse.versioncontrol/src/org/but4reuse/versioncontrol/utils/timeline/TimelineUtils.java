@@ -2,6 +2,7 @@ package org.but4reuse.versioncontrol.utils.timeline;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 
 import org.but4reuse.adapters.IElement;
@@ -13,6 +14,8 @@ import org.but4reuse.versioncontrol.IVersionControlCommit;
 import org.but4reuse.versioncontrol.event.FeatureEvent;
 import org.but4reuse.wordclouds.util.CloudRanking;
 import org.but4reuse.wordclouds.util.Cloudifier;
+import org.but4reuse.wordclouds.util.NewCloud;
+import org.but4reuse.wordclouds.util.NewTag;
 import org.eclipse.core.runtime.NullProgressMonitor;
 
 /**
@@ -24,7 +27,7 @@ import org.eclipse.core.runtime.NullProgressMonitor;
 
 public class TimelineUtils {
 
-	public static Cloud getTimelineElements(List<IElement> elements, List<IElement> penalizingElements) {
+	public static NewCloud getTimelineElements(List<IElement> elements, List<IElement> penalizingElements,int nb_feature) {
 		List<String> mergeWords = new ArrayList<>();
 
 		for (IElement element : elements) {
@@ -38,21 +41,24 @@ public class TimelineUtils {
 		}
 
 		List<List<String>> wordCollection = new ArrayList<List<String>>();
+		HashMap<Integer,List<List<String>>> wordCollectionWithFeature = new HashMap<Integer,List<List<String>>>();
 		wordCollection.add(mergeWords);
 		wordCollection.add(penalizingWords);
+		wordCollectionWithFeature.put(nb_feature, wordCollection);
 
-		Cloud cloud = Cloudifier.cloudifyTFIDF(wordCollection, 0, new NullProgressMonitor());
+		NewCloud cloud = Cloudifier.cloudifyTFIDFWithFeature(wordCollectionWithFeature, 0, new NullProgressMonitor());
 
 		return cloud;
 	}
 
-	public static List<String> getTimelineWords(List<IElement> elements, List<IElement> penalizingElements,
-			int maxNbWords) {
 
-		Cloud cloud = TimelineUtils.getTimelineElements(elements, penalizingElements);
+	public static List<String> getTimelineWords(List<IElement> elements, List<IElement> penalizingElements,
+			int maxNbWords,int nb_feature) {
+
+		NewCloud cloud = TimelineUtils.getTimelineElements(elements, penalizingElements, nb_feature);
 
 		// sort tags
-		List<Tag> tags = new CloudRanking(cloud).getRank();
+		List<NewTag> tags = new CloudRanking(cloud).getNewRank();
 
 		List<String> filteredWords = new ArrayList<>();
 
@@ -62,6 +68,7 @@ public class TimelineUtils {
 
 		return filteredWords;
 	}
+
 
 	public static List<FeatureEvent> getTimelineTags(List<IVersionControlCommit> tags) {
 		List<FeatureEvent> tagEvents = new ArrayList<>();
@@ -75,8 +82,8 @@ public class TimelineUtils {
 
 			message.add(tag.getMessage());
 
-			tagEvents.add(new FeatureEvent(FeatureEvent.Type.TAG, tag, tag, message, removed, 0, 0, 0, new Cloud(),
-					new Cloud(), new ArrayList<String>()));
+			tagEvents.add(new FeatureEvent(FeatureEvent.Type.TAG, tag, tag, message, removed, 0, 0, 0, new NewCloud(),
+					new NewCloud(), new ArrayList<String>()));
 		}
 
 		return tagEvents;

@@ -1,7 +1,9 @@
 package org.but4reuse.wordclouds.util;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.but4reuse.wordclouds.activator.Activator;
 import org.but4reuse.wordclouds.filters.IWordsProcessing;
@@ -69,6 +71,57 @@ public class Cloudifier {
 
 			c.addTag(new Tag(w, score));
 			wordsChecked.add(w);
+		}
+		return c;
+	}
+	
+	public static NewCloud cloudifyTFIDFWithFeature(HashMap<Integer, List<List<String>>> wordCollectionWithFeature, int index,
+			IProgressMonitor monitor) {
+		NewCloud c = new NewCloud();
+		for (Map.Entry<Integer, List<List<String>>> entry : wordCollectionWithFeature.entrySet()) {
+
+			if (cachedProcessedWords != entry.getValue()) {
+				for (int x = 0; x < wordCollectionWithFeature.size(); x++) {
+					List<String> tags = processWords(entry.getValue().get(x), monitor);
+					entry.getValue().set(x, tags);
+				}
+				cachedProcessedWords = entry.getValue();
+			} else {
+				wordCollectionWithFeature.put(entry.getKey(), cachedProcessedWords);
+			}
+
+			
+			c.setMaxNewTagsToDisplay(
+					Activator.getDefault().getPreferenceStore().getInt(WordCloudPreferences.WORDCLOUD_NB_W));
+			c.setMaxWeight(50);
+			c.setMinWeight(5);
+
+			List<String> wordsChecked = new ArrayList<String>();
+
+			double nbBlock = entry.getValue().size();
+			double nbWords = entry.getValue().get(index).size();
+
+			for (String w : entry.getValue().get(index)) {
+				/*
+				 * If we already add this words in the cloud we check the next words.
+				 */
+				if (TermFrequencyUtils.calculateTermFrequency(w, wordsChecked) != 0) {
+					continue;
+				}
+				/*
+				 * Here the score of the word w is calculated Formula TF-IDF (
+				 * https://fr.wikipedia.org/wiki/TF-IDF )
+				 */
+
+				double nbBlock_isPresent = nbDocContainsWords(entry.getValue(), w);
+				double nbTimeW = TermFrequencyUtils.calculateTermFrequency(w, entry.getValue().get(index));
+				double idf = Math.log(nbBlock / nbBlock_isPresent);
+				double td = (nbTimeW / nbWords);
+				double score = td * idf;
+
+				c.addNewTag(new NewTag(w, score,entry.getKey()));
+				wordsChecked.add(w);
+			}		
 		}
 		return c;
 	}

@@ -114,6 +114,43 @@ public class WordCloudUtil {
 		}
 	}
 
+	
+	public static void drawWordNewCloud(Composite cmp, NewCloud cloud) {
+		System.out.println("Xin ==========================Appel WordCloudUtil.drawWordNewCloud");
+		int x = 10, y = 10;
+		int maxH = 0;
+		cmp.setBackground(Display.getDefault().getSystemColor(SWT.COLOR_WHITE));
+
+		for (Control c : cmp.getChildren())
+			c.dispose();
+		cmp.update();
+		int spaceHint = 10;
+		for (NewTag t : cloud.tags()) {
+			Label l = new Label(cmp, SWT.NORMAL);
+			l.setForeground(Display.getDefault().getSystemColor(SWT.COLOR_BLACK));
+			l.setBackground(Display.getDefault().getSystemColor(SWT.COLOR_RED));
+
+			System.out.println("===========nb_feature::::"+t.nb_feature);
+			Font f = new Font(Display.getCurrent(), "Arial", t.getWeightInt(), SWT.ITALIC);
+			l.setFont(f);
+			l.setText(t.getName());
+			l.setToolTipText(String.format("%.2f", t.getScore()));
+			l.pack();
+
+			if (x + l.getBounds().width > cmp.getBounds().width * 0.70 - 25) {
+				x = 10;
+				y += maxH + spaceHint;
+				maxH = 0;
+			}
+
+			if (maxH < l.getBounds().height)
+				maxH = l.getBounds().height;
+
+			l.setLocation(x, y);
+			x += spaceHint + l.getBounds().width;
+		}
+
+	}
 
 	/**
 	 * 
@@ -134,6 +171,63 @@ public class WordCloudUtil {
 		toSave.setSize(1000, 1000);
 
 		WordCloudUtil.drawWordCloud(toSave, cloud);
+
+		s.open();
+		
+		// Get the real size, otherwise a lot of white space in the
+		// margins
+		int maxWidth = 10;
+		int maxHeight = 10;
+		for (Control c : toSave.getChildren()) {
+			int x = c.getBounds().x + c.getBounds().width;
+			int y = c.getBounds().y + c.getBounds().height;
+			if (x > maxWidth) {
+				maxWidth = x;
+			}
+			if (y > maxHeight) {
+				maxHeight = y;
+			}
+		}
+
+		// a little bit of margin
+		maxWidth += 10;
+		maxHeight += 10;
+		s.setSize(maxWidth * 2, maxHeight * 2);
+		Image image = new Image(s.getDisplay(), maxWidth, maxHeight);
+		ImageLoader loader = new ImageLoader();
+
+		GC gc = new GC(image);
+		toSave.print(gc);
+
+		loader.data = new ImageData[] { image.getImageData() };
+		loader.save(path, SWT.IMAGE_PNG);
+
+		gc.dispose();
+
+		s.close();
+
+	}
+	
+	/**
+	 * 
+	 * Save the word NewCloud into a png image
+	 * 
+	 * @param cloud
+	 *            This NewCloud contains strings that you want to draw in your
+	 *            canvas.
+	 * @param path
+	 *            This path is where you want to save the image
+	 */
+	public static void saveNewCloud(NewCloud cloud, String path) {
+
+		System.out.println("Xin ==========================Appel WordCloudUtil.saveNewCloud");
+		Shell s = new Shell(Display.getDefault());
+		s.setLayout(new FillLayout());
+
+		Composite toSave = new Composite(s, SWT.NORMAL);
+		toSave.setSize(1000, 1000);
+
+		WordCloudUtil.drawWordNewCloud(toSave, cloud);
 
 		s.open();
 		

@@ -3,6 +3,7 @@ package org.but4reuse.versioncontrol.event;
 import java.util.List;
 
 import org.but4reuse.versioncontrol.IVersionControlCommit;
+import org.but4reuse.wordclouds.util.NewCloud;
 import org.mcavallo.opencloud.Cloud;
 
 /**
@@ -27,13 +28,13 @@ public class FeatureEvent {
 	private int nbAddedElements;
 	private int nbRemovedElements;
 	private int nbAddedWords;
-	private Cloud addedCloud;
-	private Cloud removedCloud;
+	private NewCloud addedCloud;
+	private NewCloud removedCloud;
 	private List<String> contributors;
 
 	public FeatureEvent(Type type, IVersionControlCommit startCommit, IVersionControlCommit endCommit,
 			List<String> addedFeatures, List<String> removedFeatures, int nbAddedElements, int nbRemovedElements,
-			int nbAddedWords, Cloud addedCloud, Cloud removedCloud, List<String> contributors) {
+			int nbAddedWords, NewCloud addedCloud, NewCloud removedCloud, List<String> contributors) {
 		this.type = type;
 		this.endCommit = endCommit;
 		this.startCommit = startCommit;
@@ -79,11 +80,11 @@ public class FeatureEvent {
 		return nbAddedWords;
 	}
 
-	public Cloud getAddedCloud() {
+	public NewCloud getAddedCloud() {
 		return addedCloud;
 	}
 
-	public Cloud getRemovedCloud() {
+	public NewCloud getRemovedCloud() {
 		return removedCloud;
 	}
 

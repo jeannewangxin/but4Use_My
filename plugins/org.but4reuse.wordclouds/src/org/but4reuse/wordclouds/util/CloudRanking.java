@@ -14,6 +14,7 @@ import org.mcavallo.opencloud.Tag;
 public class CloudRanking {
 
 	private List<Tag> rank;
+	private List<NewTag> newrank;
 
 	// constructor to create ranking
 	public CloudRanking(Cloud cloud) {
@@ -31,6 +32,23 @@ public class CloudRanking {
 
 	public void setRank(List<Tag> rank) {
 		this.rank = rank;
+	}
+	
+	public CloudRanking(NewCloud cloud) {
+		setNewRank(cloud.allNewTags(new Comparator<NewTag>() {
+			@Override
+			public int compare(NewTag o1, NewTag o2) {
+				return Double.compare(o2.getScore(), o1.getScore());
+			}
+		}));
+	}
+	
+	public List<NewTag> getNewRank() {
+		return newrank;
+	}
+
+	public void setNewRank(List<NewTag> newrank) {
+		this.newrank = newrank;
 	}
 
 }

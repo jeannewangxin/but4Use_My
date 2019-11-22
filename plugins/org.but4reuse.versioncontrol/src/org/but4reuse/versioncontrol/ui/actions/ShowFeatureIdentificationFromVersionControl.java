@@ -41,6 +41,7 @@ import org.but4reuse.versioncontrol.timeline.Timeline;
 import org.but4reuse.versioncontrol.utils.Utils;
 import org.but4reuse.versioncontrol.utils.dialogs.GenericInputSelectionDialog;
 import org.but4reuse.versioncontrol.utils.timeline.TimelineUtils;
+import org.but4reuse.wordclouds.util.NewCloud;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.jface.action.IAction;
@@ -647,15 +648,15 @@ public class ShowFeatureIdentificationFromVersionControl implements IObjectActio
 
 					Timeline timeline = new Timeline(repositoryName, repositoryOwner);
 					InteractiveGrid grid = new InteractiveGrid(repositoryName);
-
+					int i = 0;// order of commit
 					for (IVersionControlFeature feature : features) {
-
+						i++;
 						boolean eventUpdate = false;
 						List<String> addedFeatures = Collections.emptyList();
 						List<String> removedFeatures = Collections.emptyList();
 
-						Cloud addedCloud = new Cloud();
-						Cloud removedCloud = new Cloud();
+						NewCloud addedCloud = new NewCloud();
+						NewCloud removedCloud = new NewCloud();
 
 						if (feature.getNbEndCommitElements() >= endCommitThreshold
 								&& feature.getNbAddedWords() >= addedWordsThreshold) {
@@ -673,11 +674,10 @@ public class ShowFeatureIdentificationFromVersionControl implements IObjectActio
 							}
 
 							addedCloud = TimelineUtils.getTimelineElements(feature.getEndCommitElements(),
-									feature.getEndCommitPenalizingElements());
+									feature.getEndCommitPenalizingElements(),i);
 
 							addedFeatures = TimelineUtils.getTimelineWords(feature.getEndCommitElements(),
-									feature.getEndCommitPenalizingElements(), maxFeatureNb);
-
+									feature.getEndCommitPenalizingElements(), maxFeatureNb,i);
 						}
 
 						if (feature.getNbStartCommitElements() >= startCommitThreshold
@@ -697,10 +697,11 @@ public class ShowFeatureIdentificationFromVersionControl implements IObjectActio
 							}
 
 							removedCloud = TimelineUtils.getTimelineElements(feature.getStartCommitElements(),
-									feature.getStartCommitPenalizingElements());
+									feature.getStartCommitPenalizingElements(),i);
 
 							removedFeatures = TimelineUtils.getTimelineWords(feature.getStartCommitElements(),
-									feature.getStartCommitPenalizingElements(), maxFeatureNb);
+									feature.getStartCommitPenalizingElements(), maxFeatureNb,i);
+
 
 						}
 
